@@ -37,10 +37,7 @@ namespace Freelance_Fusion
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
-            guna2Button4.FillColor = System.Drawing.Color.FromArgb(51, 43, 1);
-            guna2Button5.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
-            guna2Button4.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
-            guna2Button5.FillColor = System.Drawing.Color.FromArgb(0, 0, 0);
+           
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
@@ -64,9 +61,9 @@ namespace Freelance_Fusion
         private void guna2Button4_Click_1(object sender, EventArgs e)
         {
             guna2Button4.FillColor = System.Drawing.Color.FromArgb(51, 43, 1);
-            guna2Button5.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            guna2Button5.FillColor = System.Drawing.Color.FromArgb(240, 240, 240);
             guna2Button4.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
-            guna2Button5.FillColor = System.Drawing.Color.FromArgb(0, 0, 0);
+            guna2Button5.ForeColor = System.Drawing.Color.FromArgb(0, 0, 0);
         }
     }
 }

@@ -139,7 +139,7 @@
             this.Search.FocusImageTint = System.Drawing.Color.White;
             this.Search.FocusOutlineColor = System.Drawing.Color.Transparent;
             this.Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Search.ForeColor = System.Drawing.Color.Gray;
+            this.Search.ForeColor = System.Drawing.Color.Black;
             this.Search.Image = null;
             this.Search.ImageExpand = new System.Drawing.Point(0, 0);
             this.Search.ImageOffset = new System.Drawing.Point(0, 0);
@@ -168,7 +168,7 @@
             this.cuiTextBox1.FocusImageTint = System.Drawing.Color.White;
             this.cuiTextBox1.FocusOutlineColor = System.Drawing.Color.Transparent;
             this.cuiTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuiTextBox1.ForeColor = System.Drawing.Color.Gray;
+            this.cuiTextBox1.ForeColor = System.Drawing.Color.Black;
             this.cuiTextBox1.Image = null;
             this.cuiTextBox1.ImageExpand = new System.Drawing.Point(0, 0);
             this.cuiTextBox1.ImageOffset = new System.Drawing.Point(0, 0);
