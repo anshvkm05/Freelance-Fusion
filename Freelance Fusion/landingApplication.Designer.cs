@@ -78,6 +78,7 @@
             this.SignupButton.Size = new System.Drawing.Size(130, 51);
             this.SignupButton.TabIndex = 1;
             this.SignupButton.Text = "SignUp";
+            this.SignupButton.Click += new System.EventHandler(this.SignupButton_Click);
             // 
             // guna2Button1
             // 

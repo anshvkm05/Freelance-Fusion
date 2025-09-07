@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(754, 477);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "LoginRegister";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginRegister";
             this.ResumeLayout(false);
 
