@@ -74,6 +74,18 @@
     <Compile Include="LoginRegister.Designer.cs">
       <DependentUpon>LoginRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginUsercontorls\Login.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoginUsercontorls\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUsercontorls\Register.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoginUsercontorls\Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModernButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -90,6 +102,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginRegister.resx">
       <DependentUpon>LoginRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUsercontorls\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUsercontorls\Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
