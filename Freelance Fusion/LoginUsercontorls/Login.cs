@@ -8,11 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Freelance_Fusion.LoginUsercontorls
 {
     public partial class Login : UserControl
     {
+        string email;
+        string password;
         public event EventHandler SignupbtnClick;
         public Login()
         {
@@ -45,6 +48,18 @@ namespace Freelance_Fusion.LoginUsercontorls
             Singupbtn.FillColor = System.Drawing.Color.FromArgb(240, 240, 240);
             SinginBtn.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
             Singupbtn.ForeColor = System.Drawing.Color.FromArgb(0, 0, 0);
+        }
+
+        private async void loginbutton_Click(object sender, EventArgs e)
+        {
+            email = EmailTB.Text.Trim();
+            password = PassowordTB.Text;
+
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Please enter both email and password.");
+                return;
+            }
         }
     }
 }

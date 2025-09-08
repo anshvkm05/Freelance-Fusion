@@ -69,6 +69,7 @@
             this.loginbutton.Size = new System.Drawing.Size(118, 37);
             this.loginbutton.TabIndex = 1;
             this.loginbutton.Text = "Login";
+            this.loginbutton.Click += new System.EventHandler(this.loginbutton_Click);
             // 
             // GoogleLoginBtn
             // 
@@ -112,7 +113,7 @@
             this.forgetpasswordBtn.FillColor = System.Drawing.Color.Transparent;
             this.forgetpasswordBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.forgetpasswordBtn.ForeColor = System.Drawing.Color.White;
-            this.forgetpasswordBtn.Location = new System.Drawing.Point(435, 233);
+            this.forgetpasswordBtn.Location = new System.Drawing.Point(433, 233);
             this.forgetpasswordBtn.Name = "forgetpasswordBtn";
             this.forgetpasswordBtn.Size = new System.Drawing.Size(135, 24);
             this.forgetpasswordBtn.TabIndex = 4;
