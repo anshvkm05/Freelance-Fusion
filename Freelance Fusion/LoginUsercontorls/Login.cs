@@ -13,6 +13,7 @@ namespace Freelance_Fusion.LoginUsercontorls
 {
     public partial class Login : UserControl
     {
+        public event EventHandler SignupbtnClick;
         public Login()
         {
             InitializeComponent();
@@ -34,6 +35,8 @@ namespace Freelance_Fusion.LoginUsercontorls
             SinginBtn.FillColor = System.Drawing.Color.FromArgb(240, 240, 240);
             Singupbtn.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
             SinginBtn.ForeColor = System.Drawing.Color.FromArgb(0, 0, 0);
+
+            SignupbtnClick?.Invoke(this, EventArgs.Empty);
         }
 
         private void SinginBtn_Click(object sender, EventArgs e)

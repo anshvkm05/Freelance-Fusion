@@ -26,6 +26,13 @@ namespace Freelance_Fusion
         {
             LoginUsercontorls.Login lg = new LoginUsercontorls.Login();
             LoadUC(lg);
+            lg.SignupbtnClick += ShowSignupForm;
+        }
+        private void ShowSignupForm(object sender, EventArgs e)
+        {
+            LoginUsercontorls.Register su = new LoginUsercontorls.Register();
+            LoadUC(su);
+            su.SigninbtnClick += LoginRegister_Load;
         }
     }
 }

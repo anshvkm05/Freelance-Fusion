@@ -16,5 +16,11 @@ namespace Freelance_Fusion.LoginUsercontorls
         {
             InitializeComponent();
         }
+        public event EventHandler SigninbtnClick;
+
+        private void SinginBtn_Click(object sender, EventArgs e)
+        {
+            SigninbtnClick?.Invoke(this, EventArgs.Empty);
+        }
     }
 }
