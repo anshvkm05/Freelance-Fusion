@@ -103,6 +103,7 @@ namespace Freelance_Fusion.LoginUsercontorls
                 // This catches other errors, like no internet connection
                 MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
         private void PassowordTB_TextChanged(object sender, EventArgs e)
         {
@@ -172,6 +173,11 @@ namespace Freelance_Fusion.LoginUsercontorls
             {
                 lblPasswordNotSame.Visible = false;
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

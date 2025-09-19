@@ -1,4 +1,5 @@
-﻿using Guna.UI2.WinForms;
+﻿using Firebase.Auth;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +15,19 @@ namespace Freelance_Fusion.LoginUsercontorls
 {
     public partial class Login : UserControl
     {
+        // --- These must be the SAME as in your Register.cs file ---
+        private const string FirebaseApiKey = "AIzaSyB0JEuC9PiZle1u7yk2HoyIPNCcUllZjNY"; // Paste your key here
+        private const string FirebaseAuthDomain = "freelancefusion-30sep.firebaseapp.com"; // Get this from Firebase Auth settings
+
+        // --- The main client object for authentication ---
+        private readonly FirebaseAuthClient authClient;
+
+        // --- Events to communicate with the main form ---
+        public event EventHandler SignupbtnClick;
+        public event EventHandler LoginSuccessful; // Event to notify the form on successful login
+
         string email;
         string password;
-        public event EventHandler SignupbtnClick;
         public Login()
         {
             InitializeComponent();
@@ -59,6 +70,30 @@ namespace Freelance_Fusion.LoginUsercontorls
             {
                 MessageBox.Show("Please enter both email and password.");
                 return;
+            }
+
+            try
+            {
+                // --- THIS IS THE CORE FIREBASE LOGIN CALL ---
+                // It sends the email and password to Firebase for verification.
+                var userCredential = await authClient.SignInWithEmailAndPasswordAsync(email, password);
+
+                // If the call above succeeds, the user is logged in.
+                MessageBox.Show($"Welcome back!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // --- Notify the main form that login was a success ---
+                LoginSuccessful?.Invoke(this, EventArgs.Empty);
+            }
+            catch (FirebaseAuthException ex)
+            {
+                // This will catch specific Firebase errors.
+                // For example, if the reason is "WrongPassword" or "UserNotFound".
+                MessageBox.Show($"Login Failed: {ex.Reason}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                // This catches other general errors (e.g., no internet connection).
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -238,7 +238,7 @@
             this.panel1.Controls.Add(this.lblDigit);
             this.panel1.Controls.Add(this.lbl8char);
             this.panel1.Controls.Add(this.lblCapital);
-            this.panel1.Location = new System.Drawing.Point(194, 227);
+            this.panel1.Location = new System.Drawing.Point(193, 230);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(196, 51);
             this.panel1.TabIndex = 30;
