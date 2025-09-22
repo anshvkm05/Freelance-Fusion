@@ -91,6 +91,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FreelancerClientDetailsEnter\ClientQuestionaries.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FreelancerClientDetailsEnter\ClientQuestionaries.Designer.cs">
+      <DependentUpon>ClientQuestionaries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FreelancerClientDetailsEnter\Freelancer_questionaries.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FreelancerClientDetailsEnter\Freelancer_questionaries.Designer.cs">
+      <DependentUpon>Freelancer_questionaries.cs</DependentUpon>
+    </Compile>
     <Compile Include="landingApplication.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -129,6 +141,12 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FreelancerClientDetailsEnter\ClientQuestionaries.resx">
+      <DependentUpon>ClientQuestionaries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FreelancerClientDetailsEnter\Freelancer_questionaries.resx">
+      <DependentUpon>Freelancer_questionaries.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="landingApplication.resx">
       <DependentUpon>landingApplication.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +167,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -164,6 +183,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Freelancer_Profile.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
