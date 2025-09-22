@@ -16,5 +16,23 @@ namespace Freelance_Fusion
         {
             InitializeComponent();
         }
+        private void LoadUC(UserControl usercontrol)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(usercontrol);
+        }
+
+        private void LoginRegister_Load(object sender, EventArgs e)
+        {
+            LoginUsercontorls.Login lg = new LoginUsercontorls.Login();
+            LoadUC(lg);
+            lg.SignupbtnClick += ShowSignupForm;
+        }
+        private void ShowSignupForm(object sender, EventArgs e)
+        {
+            LoginUsercontorls.Register su = new LoginUsercontorls.Register();
+            LoadUC(su);
+            su.SigninbtnClick += LoginRegister_Load;
+        }
     }
 }
