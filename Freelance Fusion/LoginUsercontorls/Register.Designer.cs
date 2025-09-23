@@ -210,7 +210,7 @@
             this.SinginBtn.Name = "SinginBtn";
             this.SinginBtn.Size = new System.Drawing.Size(100, 32);
             this.SinginBtn.TabIndex = 16;
-            this.SinginBtn.Text = "Sing in";
+            this.SinginBtn.Text = "Sign in";
             this.SinginBtn.Click += new System.EventHandler(this.SinginBtn_Click);
             // 
             // Singupbtn
@@ -229,7 +229,7 @@
             this.Singupbtn.Name = "Singupbtn";
             this.Singupbtn.Size = new System.Drawing.Size(100, 32);
             this.Singupbtn.TabIndex = 17;
-            this.Singupbtn.Text = "Sing Up";
+            this.Singupbtn.Text = "Sign Up";
             // 
             // panel1
             // 
