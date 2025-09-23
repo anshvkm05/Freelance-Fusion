@@ -21,5 +21,10 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
         {
 
         }
+
+        private void EmailTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

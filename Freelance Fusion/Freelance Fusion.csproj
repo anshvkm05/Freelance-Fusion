@@ -103,6 +103,7 @@
     <Compile Include="FreelancerClientDetailsEnter\Freelancer_questionaries.Designer.cs">
       <DependentUpon>Freelancer_questionaries.cs</DependentUpon>
     </Compile>
+    <Compile Include="FreelancerClientDetailsEnter\UserProfile.cs" />
     <Compile Include="landingApplication.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -115,9 +116,7 @@
     <Compile Include="LoginRegister.Designer.cs">
       <DependentUpon>LoginRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginUsercontorls\Login.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="LoginUsercontorls\Login.cs" />
     <Compile Include="LoginUsercontorls\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
@@ -188,6 +187,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Vector.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Freelancer_Profile %282%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
