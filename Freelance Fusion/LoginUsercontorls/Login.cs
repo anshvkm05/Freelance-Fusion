@@ -15,18 +15,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Freelance_Fusion.LoginUsercontorls
 {
-    // A custom event argument class to pass the authenticated user's data
-    public class LoginEventArgs : EventArgs
-    {
-        public User User { get; }
-        public LoginEventArgs(User user)
-        {
-            User = user;
-        }
-    }
+
     public partial class Login : UserControl
     {
-
 
         private const string FirebaseApiKey = "AIzaSyB0JEuC9PiZle1u7yk2HoyIPNCcUllZjNY"; // Paste your key here
         private const string FirebaseAuthDomain = "freelancefusion-30sep.firebaseapp.com"; // Get this from Firebase Auth settings
