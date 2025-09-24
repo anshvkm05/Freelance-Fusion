@@ -26,6 +26,8 @@ namespace Freelance_Fusion.LoginUsercontorls
     }
     public partial class Login : UserControl
     {
+
+
         private const string FirebaseApiKey = "AIzaSyB0JEuC9PiZle1u7yk2HoyIPNCcUllZjNY"; // Paste your key here
         private const string FirebaseAuthDomain = "freelancefusion-30sep.firebaseapp.com"; // Get this from Firebase Auth settings
         private const string FirebaseDatabaseUrl = "https://freelancefusion-30sep-default-rtdb.firebaseio.com/"; // From Realtime Database
@@ -89,6 +91,7 @@ namespace Freelance_Fusion.LoginUsercontorls
             Singupbtn.ForeColor = System.Drawing.Color.FromArgb(0, 0, 0);
         }
 
+        
         private async void loginbutton_Click(object sender, EventArgs e)
         {
             email = EmailTB.Text.Trim();
@@ -116,6 +119,7 @@ namespace Freelance_Fusion.LoginUsercontorls
             {
                 MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
     }
 }

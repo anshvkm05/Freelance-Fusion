@@ -91,6 +91,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FreelancerClientDetailsEnter\ClientOrFreelancer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FreelancerClientDetailsEnter\ClientOrFreelancer.Designer.cs">
+      <DependentUpon>ClientOrFreelancer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FreelancerClientDetailsEnter\ClientQuestionaries.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FreelancerClientDetailsEnter\ClientOrFreelancer.resx">
+      <DependentUpon>ClientOrFreelancer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FreelancerClientDetailsEnter\ClientQuestionaries.resx">
       <DependentUpon>ClientQuestionaries.cs</DependentUpon>
