@@ -32,7 +32,6 @@ namespace Freelance_Fusion.LoginUsercontorls
 
         public event EventHandler<LoginEventArgs> LoginSuccessful; // Event to notify the form on successful login
 
-
         string email;
         string password;
         public Login()

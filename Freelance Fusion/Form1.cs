@@ -1,5 +1,6 @@
 ﻿using Firebase.Database;
 using Firebase.Database.Query;
+using Freelance_Fusion.Events;
 using Freelance_Fusion.FreelancerClientDetailsEnter;
 using System;
 using System.Collections.Generic;
@@ -21,53 +22,17 @@ namespace Freelance_Fusion
         {
             InitializeComponent();
         }
-        private void ShowLoginControl()
+        private void ShowFLQuestionariesUC(object sender, OnboardingEventArgs e)
         {
-            LoginUsercontorls.Login lg = new LoginUsercontorls.Login();
-            lg.LoginSuccessful += LoginControl_LoginSuccessful;
+            Freelancer_questionaries FQ = new Freelancer_questionaries(e.AuthenticatedClient, e.Uid);
+            FQ.ProfileSaved += ShowMainDashboard;
+            LoadUC(FQ);
         }
 
-        private async void LoginControl_LoginSuccessful(object sender, LoginUsercontorls.LoginEventArgs e)
+        private void ShowMainDashboard(object sender, EventArgs e)
         {
-            // The UID is the unique key for the user in the database.
-            string uid = e.User.LocalId;
-
-            // Check Firebase to see if the user's profile exists and is complete.
-            var userProfile = await firebaseClient
-                .Child("users") // This is the top-level collection for all users
-                .Child(uid)     // Get the specific user by their ID
-                .OnceSingleAsync<UserProfile>();
-
-            // If the profile doesn't exist or is marked as incomplete...
-            if (userProfile == null || !userProfile.IsProfileComplete)
-            {
-                // ...start the onboarding process.
-                ShowUserTypeSelection(uid, e.User.Email);
-            }
-            else
-            {
-                // The user's profile is complete, so show the main dashboard.
-                //ShowDashboard();
-            }
-        }
-
-        private void ShowUserTypeSelection(string uid, string email)
-        {
-            using (ClientOrFreelancer choiceform = new ClientOrFreelancer())
-            {
-                string userType = choiceform.SelectedUserType;
-                if (userType == "Freelancer")
-                {
-                    Freelancer_questionaries fq = new Freelancer_questionaries();
-                    LoadUC(fq);
-                }
-                else if (userType == "Client")
-                {
-                    ClientQuestionaries cq = new ClientQuestionaries();
-                    LoadUC(cq);
-                }
-            }
-
+            Dashboards.FreelancersDashboard FD = new Dashboards.FreelancersDashboard();
+            LoadUC(FD);           
         }
         private void LoadUC(UserControl usercontrol)
         {
@@ -79,7 +44,6 @@ namespace Freelance_Fusion
             landingApplication la = new landingApplication();
             LoadUC(la);
             la.singupbutton += ShowFormasOverlay;
-
         }
         public void ShowFormasOverlay(object sender, EventArgs e)
         {
@@ -93,12 +57,14 @@ namespace Freelance_Fusion
 
             using (LoginRegister lr = new LoginRegister())
             {
+                lr.LoadMainForm += ShowMainDashboard;
+                lr.LoadFreelancerQuestionaries += ShowFLQuestionariesUC;
                 overlayform.Show();
                 lr.Owner = overlayform;
-
                 lr.ShowDialog();
+                
             }
-
+            
             overlayform.Close();
         }
 

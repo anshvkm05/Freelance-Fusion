@@ -2,6 +2,7 @@
 using Firebase.Auth.Providers;
 using Firebase.Database;
 using Firebase.Database.Query;
+using Freelance_Fusion.FreelancerClientDetailsEnter;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +29,7 @@ namespace Freelance_Fusion.LoginUsercontorls
 
         // --- CORRECTED HERE: The main client object for authentication ---
         private readonly FirebaseAuthClient authClient;
-        private readonly FirebaseClient firebaseClient;
+        private readonly FirebaseClient firebaseClient = new FirebaseClient("https://freelancefusion-30sep-default-rtdb.firebaseio.com/");
         public Register()
         {
             InitializeComponent();
@@ -85,25 +86,43 @@ namespace Freelance_Fusion.LoginUsercontorls
 
             try
             {
-                // This is the core Firebase call to create a new user
-                await authClient.CreateUserWithEmailAndPasswordAsync(email, password);
+                var authCredential = await authClient.CreateUserWithEmailAndPasswordAsync(email, password);
+                string uid = authCredential.User.Uid;
+                string token = await authCredential.User.GetIdTokenAsync();
+
+                var authenticatedFirebaseClient = new FirebaseClient(
+                    FirebaseDatabaseUrl,
+                    new FirebaseOptions { AuthTokenAsyncFactory = () => Task.FromResult(token) }
+                );
+
+                var newUserProfile = new UserProfile
+                {
+                    Email = email,
+                    UserType = "Not Set",
+                    IsProfileComplete = false
+                };
+
+                // --- THE CRITICAL FIX ---
+                // We are already authenticated to the root of the database.
+                // We only need to specify the path FROM THE ROOT where we want to write.
+                // The correct path is "users/{uid}".
+                await authenticatedFirebaseClient
+                    .Child("users")      // Go to the "users" collection
+                    .Child(uid)          // Create a node with the user's unique ID
+                    .PutAsync(newUserProfile); // Save the profile object there
 
                 MessageBox.Show("Registration Successful! You can now sign in.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // You could automatically switch to the sign-in panel here if you want
                 SigninbtnClick?.Invoke(this, EventArgs.Empty);
             }
             catch (FirebaseAuthException ex)
             {
-                // This catches errors from Firebase, like "email already in use"
-                MessageBox.Show($"Registration Failed: {ex.Reason}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Registration Failed: {ex.Reason}", "Authentication Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                // This catches other errors, like no internet connection
-                MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string errorMessage = ex.InnerException?.Message ?? ex.Message;
+                MessageBox.Show($"An unexpected error occurred: {errorMessage}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
         private void PassowordTB_TextChanged(object sender, EventArgs e)
         {

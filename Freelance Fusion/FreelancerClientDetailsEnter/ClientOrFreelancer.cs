@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Firebase.Database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,21 +13,32 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
 {
     public partial class ClientOrFreelancer : UserControl
     {
-        public string SelectedUserType { get; private set; }
+        // --- Private fields to store the essential data ---
+        public event EventHandler FreelancerSelected;
+        public event EventHandler ClientSelected;
+
+        // --- THE FIX: A new constructor that accepts the required data ---
         public ClientOrFreelancer()
         {
             InitializeComponent();
         }
 
-        private void guna2PictureBox3_Click(object sender, EventArgs e)
+        private void FreelancerPictureBox_Click(object sender, EventArgs e)
         {
-            SelectedUserType = "Freelancer";
-            
+            FreelancerSelected?.Invoke(this, EventArgs.Empty);
         }
 
+        private void ClientPictureBox_Click(object sender, EventArgs e)
+        {
+            ClientSelected?.Invoke(this, EventArgs.Empty);
+        }
+        private void guna2PictureBox3_Click(object sender, EventArgs e)
+        {
+            FreelancerSelected?.Invoke(this, EventArgs.Empty);
+        }
         private void guna2PictureBox1_Click(object sender, EventArgs e)
         {
-            SelectedUserType = "Client";
+            ClientSelected?.Invoke(this, EventArgs.Empty);
         }
     }
 }
