@@ -42,33 +42,30 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
         {
             try
             {
-                // 1. Gather all the data from your textboxes, radio buttons, etc.
-                //  (Assuming you have controls named like FirstNameTB, LastNameTB, etc.)
-                var profile = new UserProfile
+                var profileData = new Dictionary<string, object>
                 {
-                    FirstName = FirstNameTB.Text, // Replace with FirstNameTB.Text
-                    LastName = "Maurya", // Replace with LastNameTB.Text
-                    Gender = "Male", // Get from radio buttons
-                    Age = 20, // Replace with int.Parse(AgeTB.Text)
-                    Email = "ansh@example.com", // Replace with EmailTB.Text
-                    PhoneNumber = "1234567890", // Replace with PhoneTB.Text
-                    KeywordSkills = "C#, .NET, Firebase".Split(',').Select(s => s.Trim()).ToList(),
-                    DetailedSkills = "Building awesome apps".Split('\n').ToList(),
-                    Education = "Computer Science", // Replace with EducationTB.Text
-                    ShortBio = "A passionate developer.", // Replace with ShortBioTB.Text
-                    LongBio = "A very passionate developer.", // Replace with LongBioTB.Text
-                    ProjectLinks = "https://github.com".Split('\n').ToList(),
-
-                    // 2. Set the critical fields to complete the onboarding
-                    UserType = "Freelancer",
-                    IsProfileComplete = true
+                     // Replace with int.Parse(AgeTB.Text)
+                    ["Email"] = "user@example.com", // Get from form
+                    ["UserType"] = "Freelancer", // Replace with EmailTB.Text
+                    ["IsProfileComplete"] = true, // Set to true after submission
+                    ["FirstName"] = "Ansh",
+                    ["LastName"] = "Maurya",
+                    ["Gender"] = "Male",
+                    ["Age"] = int.Parse("12"),
+                    ["PhoneNumber"] = "8356824894",
+                    ["KeywordSkills"] = new List<string> { "Skill1", "Skill2" }, // Get from form
+                    ["DetailedSkills"] = new List<string> { "Detail1", "Detail2" }, // Get from form
+                    ["Education"] = "BSC",
+                    ["ShortBio"] = "I am a freelacner helping people with their projects",
+                    ["LongBio"] = "A freelancer working with clients to complete there project with the best accracy ",
+                    ["ProjectLinks"] = new List<string> { "https://youtube.com" } // Get from form
                 };
 
                 // 3. Use the authenticated client to save the completed profile to the database
                 await _authenticatedClient
                     .Child("users")
                     .Child(_uid)
-                    .PutAsync(profile);
+                    .PutAsync(profileData);
 
                 MessageBox.Show("Profile saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

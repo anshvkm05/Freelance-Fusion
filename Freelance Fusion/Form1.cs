@@ -18,6 +18,8 @@ namespace Freelance_Fusion
     public partial class Form1 : Form
     {
         private readonly FirebaseClient firebaseClient = new FirebaseClient("https://freelancefusion-30sep-default-rtdb.firebaseio.com/");
+        private FirebaseClient _firebaseClient;
+        private string _uid;
         public Form1()
         {
             InitializeComponent();
@@ -64,7 +66,6 @@ namespace Freelance_Fusion
                 lr.ShowDialog();
                 
             }
-            
             overlayform.Close();
         }
 

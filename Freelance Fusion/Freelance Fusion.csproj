@@ -109,6 +109,7 @@
     <Compile Include="FreelancerClientDetailsEnter\Freelancer_questionaries.Designer.cs">
       <DependentUpon>Freelancer_questionaries.cs</DependentUpon>
     </Compile>
+    <Compile Include="FreelancerClientDetailsEnter\UserLoginProfile.cs" />
     <Compile Include="FreelancerClientDetailsEnter\UserProfile.cs" />
     <Compile Include="landingApplication.cs">
       <SubType>UserControl</SubType>

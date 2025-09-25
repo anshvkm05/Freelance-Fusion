@@ -39,31 +39,69 @@ namespace Freelance_Fusion
             try
             {
                 _uid = e.User.Uid;
+
                 string token = await e.User.GetIdTokenAsync();
+
+                // 👇 Create the FirebaseClient (this line might be the issue)
                 _authenticatedClient = new FirebaseClient(
-                    "https://freelancefusion-30sep-default-rtdb.firebaseio.com/",
+                    FirebaseDatabaseUrl, // Make sure this constant is clean
                     new FirebaseOptions { AuthTokenAsyncFactory = () => Task.FromResult(token) }
                 );
 
-                var userProfileData = await _authenticatedClient.Child("users").Child(_uid).OnceAsync<UserProfile>();
-                var userProfile = userProfileData.FirstOrDefault()?.Object;
+                // 👇 Try a simple connection first - just ping the root
+                Dictionary<string, object> userProfileData = await _authenticatedClient
+                                                            .Child("users")
+                                                            .Child(_uid)
+                                                            .OnceSingleAsync<Dictionary<string, object>>();
 
-                if (userProfile == null || !userProfile.IsProfileComplete)
+                // Continue with the rest of the logic...
+                if (userProfileData == null)
                 {
-                    // If profile is incomplete, show the role selection screen
-                    ClientorfreelancerLoad();
+                    MessageBox.Show("User profile not found. Please ensure your profile is set up.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Optionally, you might direct them to complete their profile here
+                    LoadFreelancerQuestionaries?.Invoke(this, new OnboardingEventArgs(_authenticatedClient, _uid));
+                    this.Close();
+                    return;
+                }
+                var isProfileCompleteKey = userProfileData.Keys
+                                     .FirstOrDefault(k => k.Equals("IsProfileComplete", StringComparison.OrdinalIgnoreCase));
+
+                bool isProfileComplete = false;
+                if (isProfileCompleteKey != null)
+                {
+                    if (userProfileData.TryGetValue(isProfileCompleteKey, out object profileCompleteValue))
+                    {
+                        try
+                        {
+                            // Attempt to convert the value to boolean
+                            isProfileComplete = Convert.ToBoolean(profileCompleteValue);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle cases where the data might be stored in a non-boolean format
+                            MessageBox.Show($"Warning: 'IsProfileComplete' for user {_uid} has an invalid format. Error: {ex.Message}. Defaulting to false.", "Data Issue", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            isProfileComplete = false;
+                        }
+                    }
+                }
+                if (isProfileComplete)
+                {
+                    LoadMainForm?.Invoke(this, EventArgs.Empty);
                 }
                 else
                 {
-                    // Profile is complete, close and load the dashboard
-                    LoadMainForm?.Invoke(this, EventArgs.Empty);
-                    this.Close();
+                    LoadFreelancerQuestionaries?.Invoke(this, new OnboardingEventArgs(_authenticatedClient, _uid));
                 }
+
+                this.Close();
+
+                // Close this login form
+
             }
             catch (Exception ex)
             {
                 string errorMessage = ex.InnerException?.Message ?? ex.Message;
-                MessageBox.Show("An error occurred while checking your profile: " + errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred during login: " + errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -71,9 +109,9 @@ namespace Freelance_Fusion
         {
             ClientOrFreelancer clientOrFreelancer = new ClientOrFreelancer(); // No longer needs parameters
             LoadUC(clientOrFreelancer);
-            // The handler is now more specific
+
             clientOrFreelancer.FreelancerSelected += OnFreelancerSelected;
-            // clientOrFreelancer.ClientSelected += OnClientSelected; // You would add this for the client flow
+            //clientOrFreelancer.ClientSelected += OnClientSelected; // You would add this for the client flow
         }
         private void LoginRegister_Load(object sender, EventArgs e)
         {
