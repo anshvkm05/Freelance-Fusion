@@ -1,5 +1,6 @@
 ﻿using Firebase.Database;
 using Firebase.Database.Query;
+using Freelance_Fusion.Events;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +17,10 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
     {
         private readonly FirebaseClient _authenticatedClient;
         private readonly string _uid;
+        public event EventHandler<OnboardingEventArgs> ClientSelectedFQ;
 
         // --- Event to signal that the profile has been saved ---
-        public event EventHandler ProfileSaved;
+        public event EventHandler<OnboardingEventArgs> ProfileSaved;
 
         // --- THE FIX: A new constructor that accepts the required data ---
         public Freelancer_questionaries(FirebaseClient authenticatedClient, string uid)
@@ -45,7 +47,7 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
                 var profileData = new Dictionary<string, object>
                 {
                      // Replace with int.Parse(AgeTB.Text)
-                    ["Email"] = "user@example.com", // Get from form
+                    ["ContactEmail"] = "user@example.com", // Get from form
                     ["UserType"] = "Freelancer", // Replace with EmailTB.Text
                     ["IsProfileComplete"] = true, // Set to true after submission
                     ["FirstName"] = "Ansh",
@@ -70,12 +72,17 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
                 MessageBox.Show("Profile saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // 4. Signal to the parent form that the process is complete
-                ProfileSaved?.Invoke(this, EventArgs.Empty);
+                ProfileSaved?.Invoke(this, new OnboardingEventArgs(_authenticatedClient, _uid));
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred while saving your profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ClientBtn_Click(object sender, EventArgs e)
+        {
+            ClientSelectedFQ?.Invoke(this, new OnboardingEventArgs(_authenticatedClient, _uid));
         }
     }
 }

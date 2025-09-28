@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Freelancer_questionaries));
             this.cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
             this.FirstNameTB = new Guna.UI2.WinForms.Guna2TextBox();
             this.LastNameTB = new Guna.UI2.WinForms.Guna2TextBox();
@@ -43,6 +44,7 @@
             this.Submit_Done = new Guna.UI2.WinForms.Guna2Button();
             this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ClientBtn = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -388,6 +390,7 @@
             // guna2CircleButton1
             // 
             this.guna2CircleButton1.BackgroundImage = global::Freelance_Fusion.Properties.Resources.Vector;
+            this.guna2CircleButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.guna2CircleButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2CircleButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2CircleButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -395,16 +398,16 @@
             this.guna2CircleButton1.FillColor = System.Drawing.Color.Transparent;
             this.guna2CircleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2CircleButton1.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton1.Location = new System.Drawing.Point(1217, 18);
+            this.guna2CircleButton1.Location = new System.Drawing.Point(1251, 16);
             this.guna2CircleButton1.Name = "guna2CircleButton1";
             this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton1.Size = new System.Drawing.Size(52, 52);
+            this.guna2CircleButton1.Size = new System.Drawing.Size(58, 61);
             this.guna2CircleButton1.TabIndex = 21;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::Freelance_Fusion.Properties.Resources.Freelancer_Profile__2_;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1334, 1672);
@@ -412,10 +415,30 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // ClientBtn
+            // 
+            this.ClientBtn.Animated = true;
+            this.ClientBtn.BackColor = System.Drawing.Color.Transparent;
+            this.ClientBtn.BorderRadius = 4;
+            this.ClientBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.ClientBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.ClientBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.ClientBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.ClientBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.ClientBtn.Font = new System.Drawing.Font("Arial", 12F);
+            this.ClientBtn.ForeColor = System.Drawing.Color.Black;
+            this.ClientBtn.Location = new System.Drawing.Point(1095, 135);
+            this.ClientBtn.Name = "ClientBtn";
+            this.ClientBtn.Size = new System.Drawing.Size(113, 36);
+            this.ClientBtn.TabIndex = 24;
+            this.ClientBtn.Text = "Client";
+            this.ClientBtn.Click += new System.EventHandler(this.ClientBtn_Click);
+            // 
             // Freelancer_questionaries
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ClientBtn);
             this.Controls.Add(this.Submit_Done);
             this.Controls.Add(this.guna2CircleButton1);
             this.Controls.Add(this.ProjectLinkTB);
@@ -455,5 +478,6 @@
         private Guna.UI2.WinForms.Guna2TextBox ProjectLinkTB;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
         private Guna.UI2.WinForms.Guna2Button Submit_Done;
+        private Guna.UI2.WinForms.Guna2Button ClientBtn;
     }
 }

@@ -20,15 +20,38 @@ namespace Freelance_Fusion
         private readonly FirebaseClient firebaseClient = new FirebaseClient("https://freelancefusion-30sep-default-rtdb.firebaseio.com/");
         private FirebaseClient _firebaseClient;
         private string _uid;
+        private FirebaseClient _authenticatedClient;
         public Form1()
         {
             InitializeComponent();
+        }
+        private void uidandAuthenticatedClient(object sender, OnboardingEventArgs e)
+        {
+            _authenticatedClient = e.AuthenticatedClient;
+            _uid = e.Uid;
         }
         private void ShowFLQuestionariesUC(object sender, OnboardingEventArgs e)
         {
             Freelancer_questionaries FQ = new Freelancer_questionaries(e.AuthenticatedClient, e.Uid);
             FQ.ProfileSaved += ShowMainDashboard;
             LoadUC(FQ);
+            uidandAuthenticatedClient(this, e);
+            ShowFormasOverlayFlCt();
+        }
+
+        private void ShowFLrQuestionariesUC(object sender, OnboardingEventArgs e)
+        {
+            Freelancer_questionaries FQ = new Freelancer_questionaries(_authenticatedClient, _uid);
+            FQ.ProfileSaved += ShowMainDashboard;
+            FQ.ClientSelectedFQ += ShowClientQuestionariesUC;
+            LoadUC(FQ);
+        }
+        private void ShowClientQuestionariesUC(object sender, OnboardingEventArgs e)
+        {
+            ClientQuestionaries CQ = new ClientQuestionaries(e.AuthenticatedClient, e.Uid);
+            CQ.ProfileSaved += ShowMainDashboard;
+            CQ.FreelancerSelectedCQ += ShowFLrQuestionariesUC;
+            LoadUC(CQ);
         }
 
         private void ShowMainDashboard(object sender, EventArgs e)
@@ -65,6 +88,27 @@ namespace Freelance_Fusion
                 lr.Owner = overlayform;
                 lr.ShowDialog();
                 
+            }
+            overlayform.Close();
+        }
+        public void ShowFormasOverlayFlCt()
+        {
+            Form overlayform = new Form();
+            overlayform.StartPosition = FormStartPosition.Manual;
+            overlayform.Opacity = 0.60;
+            overlayform.BackColor = Color.Black;
+            overlayform.ShowInTaskbar = false;
+            overlayform.Size = this.Size;
+            overlayform.Location = this.Location;
+
+            using (FreelancerClientDetailsEnter.FreelancerOrClientForm lrf = new FreelancerClientDetailsEnter.FreelancerOrClientForm(_authenticatedClient, _uid))
+            {
+                // Use lambda to match EventHandler signature
+                lrf.ClientSelectedd += ShowClientQuestionariesUC;
+                lrf.FreelancerSelectedd += ShowFLrQuestionariesUC;
+                overlayform.Show();
+                lrf.Owner = overlayform;
+                lrf.ShowDialog();
             }
             overlayform.Close();
         }

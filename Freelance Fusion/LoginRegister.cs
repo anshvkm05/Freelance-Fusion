@@ -87,10 +87,12 @@ namespace Freelance_Fusion
                 if (isProfileComplete)
                 {
                     LoadMainForm?.Invoke(this, EventArgs.Empty);
+                    this.Close();
                 }
                 else
                 {
                     LoadFreelancerQuestionaries?.Invoke(this, new OnboardingEventArgs(_authenticatedClient, _uid));
+                    this.Close();
                 }
 
                 this.Close();
@@ -107,7 +109,7 @@ namespace Freelance_Fusion
 
         private void ClientorfreelancerLoad()
         {
-            ClientOrFreelancer clientOrFreelancer = new ClientOrFreelancer(); // No longer needs parameters
+            ClientOrFreelancer clientOrFreelancer = new ClientOrFreelancer(_authenticatedClient, _uid); // No longer needs parameters
             LoadUC(clientOrFreelancer);
 
             clientOrFreelancer.FreelancerSelected += OnFreelancerSelected;
