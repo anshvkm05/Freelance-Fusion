@@ -23,7 +23,7 @@ namespace Freelance_Fusion
         private const string FirebaseDatabaseUrl = "https://freelancefusion-30sep-default-rtdb.firebaseio.com/";
         private FirebaseClient _authenticatedClient;
         private string _uid;
-        public event EventHandler LoadMainForm;
+        public event EventHandler<OnboardingEventArgs> LoadMainForm;
         public event EventHandler<OnboardingEventArgs> LoadFreelancerQuestionaries;
         public LoginRegister()
         {
@@ -86,7 +86,7 @@ namespace Freelance_Fusion
                 }
                 if (isProfileComplete)
                 {
-                    LoadMainForm?.Invoke(this, EventArgs.Empty);
+                    LoadMainForm?.Invoke(this, new OnboardingEventArgs(_authenticatedClient, _uid));
                     this.Close();
                 }
                 else

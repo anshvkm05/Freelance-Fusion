@@ -28,10 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientDashboard));
+            this.AddProject = new Guna.UI2.WinForms.Guna2TileButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnlOngoingProjectsContainer = new System.Windows.Forms.Panel();
+            this.flpOngoingProjects = new System.Windows.Forms.FlowLayoutPanel();
+            this.ScrollOPBtn2 = new Guna.UI2.WinForms.Guna2TileButton();
+            this.ScrollOPBtn1 = new Guna.UI2.WinForms.Guna2TileButton();
+            this.ScrollTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlOngoingProjectsContainer.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // AddProject
+            // 
+            this.AddProject.Animated = true;
+            this.AddProject.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddProject.BackgroundImage")));
+            this.AddProject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddProject.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.AddProject.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.AddProject.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.AddProject.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.AddProject.FillColor = System.Drawing.Color.Transparent;
+            this.AddProject.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.AddProject.ForeColor = System.Drawing.Color.White;
+            this.AddProject.Location = new System.Drawing.Point(761, 276);
+            this.AddProject.Name = "AddProject";
+            this.AddProject.Size = new System.Drawing.Size(313, 395);
+            this.AddProject.TabIndex = 1;
+            this.AddProject.Click += new System.EventHandler(this.AddProject_Click);
             // 
             // pictureBox1
             // 
@@ -42,15 +68,80 @@
             this.pictureBox1.Size = new System.Drawing.Size(1330, 2950);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
+            // 
+            // pnlOngoingProjectsContainer
+            // 
+            this.pnlOngoingProjectsContainer.Controls.Add(this.flpOngoingProjects);
+            this.pnlOngoingProjectsContainer.Location = new System.Drawing.Point(79, 917);
+            this.pnlOngoingProjectsContainer.Name = "pnlOngoingProjectsContainer";
+            this.pnlOngoingProjectsContainer.Size = new System.Drawing.Size(1182, 454);
+            this.pnlOngoingProjectsContainer.TabIndex = 2;
+            // 
+            // flpOngoingProjects
+            // 
+            this.flpOngoingProjects.AutoScroll = true;
+            this.flpOngoingProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpOngoingProjects.Location = new System.Drawing.Point(0, 0);
+            this.flpOngoingProjects.Name = "flpOngoingProjects";
+            this.flpOngoingProjects.Size = new System.Drawing.Size(1182, 454);
+            this.flpOngoingProjects.TabIndex = 0;
+            this.flpOngoingProjects.WrapContents = false;
+            // 
+            // ScrollOPBtn2
+            // 
+            this.ScrollOPBtn2.Animated = true;
+            this.ScrollOPBtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ScrollOPBtn2.BackgroundImage")));
+            this.ScrollOPBtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ScrollOPBtn2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.ScrollOPBtn2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.ScrollOPBtn2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.ScrollOPBtn2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.ScrollOPBtn2.FillColor = System.Drawing.Color.Transparent;
+            this.ScrollOPBtn2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ScrollOPBtn2.ForeColor = System.Drawing.Color.White;
+            this.ScrollOPBtn2.Location = new System.Drawing.Point(1267, 1111);
+            this.ScrollOPBtn2.Name = "ScrollOPBtn2";
+            this.ScrollOPBtn2.Size = new System.Drawing.Size(24, 57);
+            this.ScrollOPBtn2.TabIndex = 0;
+            this.ScrollOPBtn2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ScrollOPBtn2_MouseDown);
+            this.ScrollOPBtn2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ScrollOPBtn2_MouseUp);
+            // 
+            // ScrollOPBtn1
+            // 
+            this.ScrollOPBtn1.Animated = true;
+            this.ScrollOPBtn1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ScrollOPBtn1.BackgroundImage")));
+            this.ScrollOPBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ScrollOPBtn1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.ScrollOPBtn1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.ScrollOPBtn1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.ScrollOPBtn1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.ScrollOPBtn1.FillColor = System.Drawing.Color.Transparent;
+            this.ScrollOPBtn1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ScrollOPBtn1.ForeColor = System.Drawing.Color.White;
+            this.ScrollOPBtn1.Location = new System.Drawing.Point(49, 1112);
+            this.ScrollOPBtn1.Name = "ScrollOPBtn1";
+            this.ScrollOPBtn1.Size = new System.Drawing.Size(24, 56);
+            this.ScrollOPBtn1.TabIndex = 3;
+            // 
+            // ScrollTimer
+            // 
+            this.ScrollTimer.Tick += new System.EventHandler(this.ScrollTimer_Tick);
             // 
             // ClientDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ScrollOPBtn1);
+            this.Controls.Add(this.ScrollOPBtn2);
+            this.Controls.Add(this.pnlOngoingProjectsContainer);
+            this.Controls.Add(this.AddProject);
             this.Controls.Add(this.pictureBox1);
             this.Name = "ClientDashboard";
             this.Size = new System.Drawing.Size(1330, 2950);
+            this.Load += new System.EventHandler(this.ClientDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlOngoingProjectsContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -58,5 +149,11 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2TileButton AddProject;
+        private System.Windows.Forms.Panel pnlOngoingProjectsContainer;
+        private System.Windows.Forms.FlowLayoutPanel flpOngoingProjects;
+        private Guna.UI2.WinForms.Guna2TileButton ScrollOPBtn2;
+        private Guna.UI2.WinForms.Guna2TileButton ScrollOPBtn1;
+        private System.Windows.Forms.Timer ScrollTimer;
     }
 }

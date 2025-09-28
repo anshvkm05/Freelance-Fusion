@@ -79,12 +79,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardsForDashboards\ProjectCard.cs">
+    <Compile Include="CardsForClientDashboards\OnGoingProjectCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CardsForDashboards\ProjectCard.Designer.cs">
-      <DependentUpon>ProjectCard.cs</DependentUpon>
+    <Compile Include="CardsForClientDashboards\OnGoingProjectCard.Designer.cs">
+      <DependentUpon>OnGoingProjectCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="CardsForClientDashboards\ProjectClient.cs" />
     <Compile Include="Dashboards\ClientDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -161,10 +162,22 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="OnboardingEventArgs.cs" />
+    <Compile Include="PostProjectandSeeProjects\AddProjectClient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PostProjectandSeeProjects\AddProjectClient.Designer.cs">
+      <DependentUpon>AddProjectClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PostProjectandSeeProjects\OtherForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PostProjectandSeeProjects\OtherForms.Designer.cs">
+      <DependentUpon>OtherForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CardsForDashboards\ProjectCard.resx">
-      <DependentUpon>ProjectCard.cs</DependentUpon>
+    <EmbeddedResource Include="CardsForClientDashboards\OnGoingProjectCard.resx">
+      <DependentUpon>OnGoingProjectCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboards\ClientDashboard.resx">
       <DependentUpon>ClientDashboard.cs</DependentUpon>
@@ -198,6 +211,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginUsercontorls\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PostProjectandSeeProjects\AddProjectClient.resx">
+      <DependentUpon>AddProjectClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PostProjectandSeeProjects\OtherForms.resx">
+      <DependentUpon>OtherForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

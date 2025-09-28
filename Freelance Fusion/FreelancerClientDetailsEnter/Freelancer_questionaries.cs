@@ -46,7 +46,7 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
             {
                 var profileData = new Dictionary<string, object>
                 {
-                     // Replace with int.Parse(AgeTB.Text)
+                    // The vlaues are preset for testing pusposes, it will get Replace with respective testboxes values
                     ["ContactEmail"] = "user@example.com", // Get from form
                     ["UserType"] = "Freelancer", // Replace with EmailTB.Text
                     ["IsProfileComplete"] = true, // Set to true after submission

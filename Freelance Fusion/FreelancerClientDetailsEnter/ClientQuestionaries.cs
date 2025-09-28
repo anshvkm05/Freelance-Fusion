@@ -19,7 +19,7 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
         public event EventHandler<OnboardingEventArgs> FreelancerSelectedCQ;
         private readonly FirebaseClient _authenticatedClient;
         private readonly string _uid;
-        public event EventHandler ProfileSaved;
+        public event EventHandler<OnboardingEventArgs> ProfileSaved;
         public ClientQuestionaries(FirebaseClient authenticatedClient, string uid)
         {
             InitializeComponent();

@@ -49,20 +49,32 @@ namespace Freelance_Fusion
         private void ShowClientQuestionariesUC(object sender, OnboardingEventArgs e)
         {
             ClientQuestionaries CQ = new ClientQuestionaries(e.AuthenticatedClient, e.Uid);
-            CQ.ProfileSaved += ShowMainDashboard;
+            CQ.ProfileSaved += ShowClientDashboard;
             CQ.FreelancerSelectedCQ += ShowFLrQuestionariesUC;
             LoadUC(CQ);
         }
 
-        private void ShowMainDashboard(object sender, EventArgs e)
+        private void ShowMainDashboard(object sender, OnboardingEventArgs e)
         {
-            Dashboards.FreelancersDashboard FD = new Dashboards.FreelancersDashboard();
+            Dashboards.FreelancersDashboard FD = new Dashboards.FreelancersDashboard(e.AuthenticatedClient, e.Uid);
             LoadUC(FD);           
+        }
+        private void ShowClientDashboard(object sender, OnboardingEventArgs e)
+        {
+            Dashboards.ClientDashboard CD = new Dashboards.ClientDashboard(e.AuthenticatedClient, e.Uid);
+            CD.AddProjectClicked += ShowAddProjectUC;
+            LoadUC(CD);
+        }
+
+        private void ShowAddProjectUC(object sender, OnboardingEventArgs e)
+        {
+            PostProjectandSeeProjects.OtherForms AP = new PostProjectandSeeProjects.OtherForms(e.AuthenticatedClient, e.Uid);
+            AP.Show();
         }
         private void LoadUC(UserControl usercontrol)
         {
             panel1.Controls.Clear();
-            panel1.Controls.Add(usercontrol);
+            panel1.Controls.Add(usercontrol); 
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -82,7 +94,7 @@ namespace Freelance_Fusion
 
             using (LoginRegister lr = new LoginRegister())
             {
-                lr.LoadMainForm += ShowMainDashboard;
+                lr.LoadMainForm += ShowClientDashboard;
                 lr.LoadFreelancerQuestionaries += ShowFLQuestionariesUC;
                 overlayform.Show();
                 lr.Owner = overlayform;
