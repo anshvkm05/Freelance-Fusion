@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Firebase.Database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,13 @@ namespace Freelance_Fusion.Dashboards
 {
     public partial class FreelancersDashboard : UserControl
     {
-        public FreelancersDashboard()
+        private readonly FirebaseClient _authenticatedClient;
+        private readonly string _uid;
+        public FreelancersDashboard(FirebaseClient authenticatedClient, string uid)
         {
             InitializeComponent();
+            _authenticatedClient = authenticatedClient;
+            _uid = uid;
         }
     }
 }

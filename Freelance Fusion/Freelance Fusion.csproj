@@ -49,7 +49,7 @@
       <HintPath>..\packages\LiteDB.5.0.17\lib\net45\LiteDB.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -79,6 +79,19 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardsForClientDashboards\OnGoingProjectCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardsForClientDashboards\OnGoingProjectCard.Designer.cs">
+      <DependentUpon>OnGoingProjectCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CardsForClientDashboards\ProjectClient.cs" />
+    <Compile Include="Dashboards\ClientDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dashboards\ClientDashboard.Designer.cs">
+      <DependentUpon>ClientDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboards\FreelancersDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,11 +104,23 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FreelancerClientDetailsEnter\ClientOrFreelancer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FreelancerClientDetailsEnter\ClientOrFreelancer.Designer.cs">
+      <DependentUpon>ClientOrFreelancer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FreelancerClientDetailsEnter\ClientQuestionaries.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FreelancerClientDetailsEnter\ClientQuestionaries.Designer.cs">
       <DependentUpon>ClientQuestionaries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FreelancerClientDetailsEnter\FreelancerOrClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FreelancerClientDetailsEnter\FreelancerOrClientForm.Designer.cs">
+      <DependentUpon>FreelancerOrClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FreelancerClientDetailsEnter\Freelancer_questionaries.cs">
       <SubType>UserControl</SubType>
@@ -103,6 +128,8 @@
     <Compile Include="FreelancerClientDetailsEnter\Freelancer_questionaries.Designer.cs">
       <DependentUpon>Freelancer_questionaries.cs</DependentUpon>
     </Compile>
+    <Compile Include="FreelancerClientDetailsEnter\UserLoginProfile.cs" />
+    <Compile Include="FreelancerClientDetailsEnter\UserProfile.cs" />
     <Compile Include="landingApplication.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -121,6 +148,7 @@
     <Compile Include="LoginUsercontorls\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginUsercontorls\LoginEventArgs.cs" />
     <Compile Include="LoginUsercontorls\Register.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,16 +161,41 @@
     <Compile Include="ModernPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="OnboardingEventArgs.cs" />
+    <Compile Include="PostProjectandSeeProjects\AddProjectClient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PostProjectandSeeProjects\AddProjectClient.Designer.cs">
+      <DependentUpon>AddProjectClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PostProjectandSeeProjects\OtherForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PostProjectandSeeProjects\OtherForms.Designer.cs">
+      <DependentUpon>OtherForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CardsForClientDashboards\OnGoingProjectCard.resx">
+      <DependentUpon>OnGoingProjectCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboards\ClientDashboard.resx">
+      <DependentUpon>ClientDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboards\FreelancersDashboard.resx">
       <DependentUpon>FreelancersDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FreelancerClientDetailsEnter\ClientOrFreelancer.resx">
+      <DependentUpon>ClientOrFreelancer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FreelancerClientDetailsEnter\ClientQuestionaries.resx">
       <DependentUpon>ClientQuestionaries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FreelancerClientDetailsEnter\FreelancerOrClientForm.resx">
+      <DependentUpon>FreelancerOrClientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FreelancerClientDetailsEnter\Freelancer_questionaries.resx">
       <DependentUpon>Freelancer_questionaries.cs</DependentUpon>
@@ -158,6 +211,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginUsercontorls\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PostProjectandSeeProjects\AddProjectClient.resx">
+      <DependentUpon>AddProjectClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PostProjectandSeeProjects\OtherForms.resx">
+      <DependentUpon>OtherForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -186,5 +245,12 @@
   <ItemGroup>
     <None Include="Resources\Freelancer_Profile.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Vector.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Freelancer_Profile %282%29.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
