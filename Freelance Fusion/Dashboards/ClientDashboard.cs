@@ -89,5 +89,10 @@ namespace Freelance_Fusion.Dashboards
         {
             ClientDashboard_Load(this, e);
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

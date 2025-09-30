@@ -21,5 +21,10 @@ namespace Freelance_Fusion.Dashboards
             _authenticatedClient = authenticatedClient;
             _uid = uid;
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -32,10 +32,16 @@
             this.ClientBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlOngoingProjectsContainer = new System.Windows.Forms.Panel();
+            this.flpOngoingProjects = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlRecommendedProjectsContainer = new System.Windows.Forms.Panel();
+            this.flpRecommendedProjects = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlCompletedProjects = new System.Windows.Forms.Panel();
+            this.flpCompletedProjects = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pnlOngoingProjectsContainer.SuspendLayout();
+            this.pnlRecommendedProjectsContainer.SuspendLayout();
+            this.pnlCompletedProjects.SuspendLayout();
             this.SuspendLayout();
             // 
             // ClientBtn
@@ -82,35 +88,72 @@
             this.pictureBox1.Size = new System.Drawing.Size(1334, 2560);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // panel1
+            // pnlOngoingProjectsContainer
             // 
-            this.panel1.Controls.Add(this.flowLayoutPanel1);
-            this.panel1.Location = new System.Drawing.Point(71, 280);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1213, 385);
-            this.panel1.TabIndex = 40;
+            this.pnlOngoingProjectsContainer.Controls.Add(this.flpOngoingProjects);
+            this.pnlOngoingProjectsContainer.Location = new System.Drawing.Point(87, 268);
+            this.pnlOngoingProjectsContainer.Name = "pnlOngoingProjectsContainer";
+            this.pnlOngoingProjectsContainer.Size = new System.Drawing.Size(1182, 454);
+            this.pnlOngoingProjectsContainer.TabIndex = 40;
             // 
-            // flowLayoutPanel1
+            // flpOngoingProjects
             // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1213, 385);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.flpOngoingProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpOngoingProjects.Location = new System.Drawing.Point(0, 0);
+            this.flpOngoingProjects.Name = "flpOngoingProjects";
+            this.flpOngoingProjects.Size = new System.Drawing.Size(1182, 454);
+            this.flpOngoingProjects.TabIndex = 0;
+            // 
+            // pnlRecommendedProjectsContainer
+            // 
+            this.pnlRecommendedProjectsContainer.Controls.Add(this.flpRecommendedProjects);
+            this.pnlRecommendedProjectsContainer.Location = new System.Drawing.Point(87, 1350);
+            this.pnlRecommendedProjectsContainer.Name = "pnlRecommendedProjectsContainer";
+            this.pnlRecommendedProjectsContainer.Size = new System.Drawing.Size(1182, 454);
+            this.pnlRecommendedProjectsContainer.TabIndex = 41;
+            // 
+            // flpRecommendedProjects
+            // 
+            this.flpRecommendedProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpRecommendedProjects.Location = new System.Drawing.Point(0, 0);
+            this.flpRecommendedProjects.Name = "flpRecommendedProjects";
+            this.flpRecommendedProjects.Size = new System.Drawing.Size(1182, 454);
+            this.flpRecommendedProjects.TabIndex = 0;
+            // 
+            // pnlCompletedProjects
+            // 
+            this.pnlCompletedProjects.Controls.Add(this.flpCompletedProjects);
+            this.pnlCompletedProjects.Location = new System.Drawing.Point(87, 1983);
+            this.pnlCompletedProjects.Name = "pnlCompletedProjects";
+            this.pnlCompletedProjects.Size = new System.Drawing.Size(1182, 454);
+            this.pnlCompletedProjects.TabIndex = 42;
+            // 
+            // flpCompletedProjects
+            // 
+            this.flpCompletedProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpCompletedProjects.Location = new System.Drawing.Point(0, 0);
+            this.flpCompletedProjects.Name = "flpCompletedProjects";
+            this.flpCompletedProjects.Size = new System.Drawing.Size(1182, 454);
+            this.flpCompletedProjects.TabIndex = 0;
             // 
             // FreelancersDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlCompletedProjects);
+            this.Controls.Add(this.pnlRecommendedProjectsContainer);
+            this.Controls.Add(this.pnlOngoingProjectsContainer);
             this.Controls.Add(this.guna2CircleButton1);
             this.Controls.Add(this.ClientBtn);
             this.Controls.Add(this.pictureBox1);
             this.Name = "FreelancersDashboard";
             this.Size = new System.Drawing.Size(1334, 2560);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
+            this.pnlOngoingProjectsContainer.ResumeLayout(false);
+            this.pnlRecommendedProjectsContainer.ResumeLayout(false);
+            this.pnlCompletedProjects.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -120,7 +163,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2Button ClientBtn;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel pnlOngoingProjectsContainer;
+        private System.Windows.Forms.FlowLayoutPanel flpOngoingProjects;
+        private System.Windows.Forms.Panel pnlRecommendedProjectsContainer;
+        private System.Windows.Forms.FlowLayoutPanel flpRecommendedProjects;
+        private System.Windows.Forms.Panel pnlCompletedProjects;
+        private System.Windows.Forms.FlowLayoutPanel flpCompletedProjects;
     }
 }
