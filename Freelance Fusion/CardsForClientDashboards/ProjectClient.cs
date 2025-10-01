@@ -19,9 +19,12 @@ namespace Freelance_Fusion.CardsForClientDashboards
         public DateTime Deadline { get; set; }
         public int Progress { get; set; } // A value from 0 to 100
         public double Rating { get; set; } // A value from 0 to 5
-    
 
-    public ProjectClient()
+        public string DetailedDescription { get; set; }
+        public List<string> RequiredSkills { get; set; }
+        public List<string> Deliverables { get; set; }
+
+        public ProjectClient()
         {
             KeySkillsTags = new List<string>();
         }

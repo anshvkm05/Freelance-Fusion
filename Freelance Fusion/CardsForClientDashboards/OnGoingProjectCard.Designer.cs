@@ -40,6 +40,7 @@
             this.ToPayRichTB = new System.Windows.Forms.RichTextBox();
             this.ProgressPercentageRichTB = new System.Windows.Forms.RichTextBox();
             this.flpTags = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,6 +127,7 @@
             this.DeadlineRichTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DeadlineRichTB.Cursor = System.Windows.Forms.Cursors.Default;
             this.DeadlineRichTB.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeadlineRichTB.ForeColor = System.Drawing.Color.Red;
             this.DeadlineRichTB.Location = new System.Drawing.Point(193, 271);
             this.DeadlineRichTB.Name = "DeadlineRichTB";
             this.DeadlineRichTB.ReadOnly = true;
@@ -183,10 +185,21 @@
             this.flpTags.Size = new System.Drawing.Size(259, 59);
             this.flpTags.TabIndex = 10;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(193, 233);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "View";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // OnGoingProjectCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.flpTags);
             this.Controls.Add(this.ProgressPercentageRichTB);
             this.Controls.Add(this.ToPayRichTB);
@@ -218,5 +231,6 @@
         private System.Windows.Forms.RichTextBox ToPayRichTB;
         private System.Windows.Forms.RichTextBox ProgressPercentageRichTB;
         private System.Windows.Forms.FlowLayoutPanel flpTags;
+        private System.Windows.Forms.Button button1;
     }
 }

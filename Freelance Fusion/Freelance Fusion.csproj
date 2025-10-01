@@ -79,6 +79,19 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllProjectsUCandForm\ProjectDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllProjectsUCandForm\ProjectDetailForm.Designer.cs">
+      <DependentUpon>ProjectDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AllProjectsUCandForm\ProjectDetailUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AllProjectsUCandForm\ProjectDetailUC.Designer.cs">
+      <DependentUpon>ProjectDetailUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AllProjectsUCandForm\ProjectEventArgs.cs" />
     <Compile Include="CardsForClientDashboards\OnGoingProjectCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -86,6 +99,12 @@
       <DependentUpon>OnGoingProjectCard.cs</DependentUpon>
     </Compile>
     <Compile Include="CardsForClientDashboards\ProjectClient.cs" />
+    <Compile Include="CardsForFreelancerDashboard\RecommendedProjectCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardsForFreelancerDashboard\RecommendedProjectCard.Designer.cs">
+      <DependentUpon>RecommendedProjectCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboards\ClientDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -176,6 +195,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AllProjectsUCandForm\ProjectDetailForm.resx">
+      <DependentUpon>ProjectDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllProjectsUCandForm\ProjectDetailUC.resx">
+      <DependentUpon>ProjectDetailUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CardsForClientDashboards\OnGoingProjectCard.resx">
       <DependentUpon>OnGoingProjectCard.cs</DependentUpon>
     </EmbeddedResource>

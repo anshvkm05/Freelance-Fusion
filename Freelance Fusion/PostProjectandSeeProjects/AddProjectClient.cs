@@ -43,7 +43,7 @@ namespace Freelance_Fusion.PostProjectandSeeProjects
                 {
                     // --- Core Information ---
                     ["ClientID"] = _uid, // Links the project to the currently logged-in client
-                    ["Title"] = "Android modern Fitness tracker App",
+                    ["Title"] = FirstNameTB.Text,
                     ["Description"] = "Create a fast and responsive online store for selling handmade crafts.",
                     ["KeySkillsTags"] = skillsList,
                     ["DetailedDescription"] = "The project involves developing a full-stack web application. The frontend should be built with a modern framework like React or Vue, and the backend needs to handle product management, orders, and user authentication.",
@@ -88,15 +88,19 @@ namespace Freelance_Fusion.PostProjectandSeeProjects
                 await _authenticatedClient
                     .Child("projects")
                     .Child(newProjectId)
-                    .PatchAsync(new Dictionary<string, object>
-                    {
-                        { "ProjectID", newProjectId }
-                    });
+                    .PatchAsync(new Dictionary<string, object> { { "ProjectID", newProjectId } });
+
+                // --- NEW SCALABLE APPROACH ---
+                // Step 3: Add a reference (the Project ID) to the client's own list of posted projects.
+                // This creates an index for efficient fetching later.
+                await _authenticatedClient
+                    .Child("users")
+                    .Child(_uid) // The current client's user ID
+                    .Child("postedProjects") // A new node to store their project IDs
+                    .Child(newProjectId) // Use the project ID as the key
+                    .PutAsync(true); // Store a simple boolean 'true' as the value
 
                 MessageBox.Show("Your project has been posted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // 4. Signal to the parent form (the dashboard) that the process is complete.
-                // This allows the dashboard to refresh its list of ongoing projects.
                 ProjectPosted?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception ex)

@@ -37,13 +37,15 @@
             this.ScrollOPBtn2 = new Guna.UI2.WinForms.Guna2TileButton();
             this.ScrollOPBtn1 = new Guna.UI2.WinForms.Guna2TileButton();
             this.ScrollTimer = new System.Windows.Forms.Timer(this.components);
-            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.Profile = new Guna.UI2.WinForms.Guna2CircleButton();
             this.pnlRecommendedFreelancers = new System.Windows.Forms.Panel();
             this.flpRecommendedFreelancers = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlPastProjects = new System.Windows.Forms.Panel();
+            this.flpPastProjects = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlOngoingProjectsContainer.SuspendLayout();
             this.pnlRecommendedFreelancers.SuspendLayout();
+            this.pnlPastProjects.SuspendLayout();
             this.SuspendLayout();
             // 
             // AddProject
@@ -134,22 +136,23 @@
             // 
             this.ScrollTimer.Tick += new System.EventHandler(this.ScrollTimer_Tick);
             // 
-            // guna2CircleButton1
+            // Profile
             // 
-            this.guna2CircleButton1.BackgroundImage = global::Freelance_Fusion.Properties.Resources.Vector;
-            this.guna2CircleButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.guna2CircleButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2CircleButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2CircleButton1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CircleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2CircleButton1.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton1.Location = new System.Drawing.Point(1249, 12);
-            this.guna2CircleButton1.Name = "guna2CircleButton1";
-            this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton1.Size = new System.Drawing.Size(58, 61);
-            this.guna2CircleButton1.TabIndex = 40;
+            this.Profile.BackgroundImage = global::Freelance_Fusion.Properties.Resources.Vector;
+            this.Profile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Profile.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Profile.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Profile.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Profile.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Profile.FillColor = System.Drawing.Color.Transparent;
+            this.Profile.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Profile.ForeColor = System.Drawing.Color.White;
+            this.Profile.Location = new System.Drawing.Point(1249, 12);
+            this.Profile.Name = "Profile";
+            this.Profile.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.Profile.Size = new System.Drawing.Size(58, 61);
+            this.Profile.TabIndex = 40;
+            this.Profile.Click += new System.EventHandler(this.Profile_Click);
             // 
             // pnlRecommendedFreelancers
             // 
@@ -167,20 +170,29 @@
             this.flpRecommendedFreelancers.Size = new System.Drawing.Size(1182, 454);
             this.flpRecommendedFreelancers.TabIndex = 0;
             // 
-            // panel2
+            // pnlPastProjects
             // 
-            this.panel2.Location = new System.Drawing.Point(79, 2050);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1182, 454);
-            this.panel2.TabIndex = 42;
+            this.pnlPastProjects.Controls.Add(this.flpPastProjects);
+            this.pnlPastProjects.Location = new System.Drawing.Point(79, 2040);
+            this.pnlPastProjects.Name = "pnlPastProjects";
+            this.pnlPastProjects.Size = new System.Drawing.Size(1182, 454);
+            this.pnlPastProjects.TabIndex = 42;
+            // 
+            // flpPastProjects
+            // 
+            this.flpPastProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpPastProjects.Location = new System.Drawing.Point(0, 0);
+            this.flpPastProjects.Name = "flpPastProjects";
+            this.flpPastProjects.Size = new System.Drawing.Size(1182, 454);
+            this.flpPastProjects.TabIndex = 0;
             // 
             // ClientDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnlPastProjects);
             this.Controls.Add(this.pnlRecommendedFreelancers);
-            this.Controls.Add(this.guna2CircleButton1);
+            this.Controls.Add(this.Profile);
             this.Controls.Add(this.ScrollOPBtn1);
             this.Controls.Add(this.ScrollOPBtn2);
             this.Controls.Add(this.pnlOngoingProjectsContainer);
@@ -192,6 +204,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlOngoingProjectsContainer.ResumeLayout(false);
             this.pnlRecommendedFreelancers.ResumeLayout(false);
+            this.pnlPastProjects.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -205,9 +218,10 @@
         private Guna.UI2.WinForms.Guna2TileButton ScrollOPBtn2;
         private Guna.UI2.WinForms.Guna2TileButton ScrollOPBtn1;
         private System.Windows.Forms.Timer ScrollTimer;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
+        private Guna.UI2.WinForms.Guna2CircleButton Profile;
         private System.Windows.Forms.Panel pnlRecommendedFreelancers;
         private System.Windows.Forms.FlowLayoutPanel flpRecommendedFreelancers;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlPastProjects;
+        private System.Windows.Forms.FlowLayoutPanel flpPastProjects;
     }
 }
