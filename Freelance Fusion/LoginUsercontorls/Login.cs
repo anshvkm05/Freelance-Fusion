@@ -84,6 +84,7 @@ namespace Freelance_Fusion.LoginUsercontorls
         
         private async void loginbutton_Click(object sender, EventArgs e)
         {
+            loginbutton.Enabled = false; // Disable the button to prevent multiple clicks
             email = EmailTB.Text.Trim();
             password = PassowordTB.Text;
 
@@ -103,10 +104,12 @@ namespace Freelance_Fusion.LoginUsercontorls
             }
             catch (FirebaseAuthException ex)
             {
+                loginbutton.Enabled = true;
                 MessageBox.Show($"Login Failed: {ex.Reason}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
+                loginbutton.Enabled = true;
                 MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 

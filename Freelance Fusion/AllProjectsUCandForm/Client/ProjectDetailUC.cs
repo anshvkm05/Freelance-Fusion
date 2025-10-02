@@ -190,7 +190,21 @@ namespace Freelance_Fusion.AllProjectsUCandForm
                 flpBids.Visible = true;
                 await LoadBids();
             }
-                
+            if (_project.Status == "In Progress")
+            {
+                btnPayforProject.Visible = true;
+                btnPayforProject.Enabled = false;
+                lblRate.Visible = false;
+                rate1.Visible = false;
+                rate2.Visible = false;
+                rate3.Visible = false;
+                rate4.Visible = false;
+                rate5.Visible = false;
+                RTReviewLink.Visible = true;
+                lblReviewLink.Visible = true;
+                flpBids.Visible = false;
+            }
+
         }
 
         private void rate1_Click(object sender, EventArgs e)

@@ -278,7 +278,7 @@
             this.RTReviewLink.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.RTReviewLink.Size = new System.Drawing.Size(559, 33);
             this.RTReviewLink.TabIndex = 24;
-            this.RTReviewLink.Text = "reviewLink";
+            this.RTReviewLink.Text = "reviewLink Once Client submit";
             this.RTReviewLink.Visible = false;
             // 
             // rate1
@@ -305,6 +305,7 @@
             // lblRate
             // 
             this.lblRate.AutoSize = true;
+            this.lblRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lblRate.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRate.Location = new System.Drawing.Point(113, 1454);
             this.lblRate.Name = "lblRate";
@@ -316,6 +317,7 @@
             // lblReviewLink
             // 
             this.lblReviewLink.AutoSize = true;
+            this.lblReviewLink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lblReviewLink.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReviewLink.Location = new System.Drawing.Point(113, 1333);
             this.lblReviewLink.Name = "lblReviewLink";

@@ -18,6 +18,8 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
         private readonly FirebaseClient _authenticatedClient;
         private readonly string _uid;
         public event EventHandler<OnboardingEventArgs> ClientSelectedFQ;
+        private string firstName;
+        private string lastName;
 
         // --- Event to signal that the profile has been saved ---
         public event EventHandler<OnboardingEventArgs> ProfileSaved;
@@ -42,6 +44,22 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
 
         private async void Submit_Done_Click(object sender, EventArgs e)
         {
+            if (FirstNameTB.Text == "")
+            {
+                firstName = "FreelancerAnsh";
+            }
+            else
+            {
+                firstName = FirstNameTB.Text;
+            }
+            if (LastNameTB.Text == "")
+            {
+                lastName = "Maurya";
+            }
+            else
+            {
+                lastName = LastNameTB.Text;
+            }
             try
             {
                 var profileData = new Dictionary<string, object>
@@ -50,10 +68,10 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
                     ["ContactEmail"] = "user@example.com", // Get from form
                     ["UserType"] = "Freelancer", // Replace with EmailTB.Text
                     ["IsProfileComplete"] = true, // Set to true after submission
-                    ["FirstName"] = "Ansh",
-                    ["LastName"] = "Maurya",
+                    ["FirstName"] = firstName,
+                    ["LastName"] = lastName,
                     ["Gender"] = "Male",
-                    ["Age"] = int.Parse("12"),
+                    ["Age"] = int.Parse("23"),
                     ["PhoneNumber"] = "8356824894",
                     ["KeywordSkills"] = new List<string> { "Skill1", "Skill2" }, // Get from form
                     ["DetailedSkills"] = new List<string> { "Detail1", "Detail2" }, // Get from form

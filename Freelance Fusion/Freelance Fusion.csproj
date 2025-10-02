@@ -175,6 +175,7 @@
     <Compile Include="landingApplication.Designer.cs">
       <DependentUpon>landingApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginCompleteEventArgs.cs" />
     <Compile Include="LoginRegister.cs">
       <SubType>Form</SubType>
     </Compile>

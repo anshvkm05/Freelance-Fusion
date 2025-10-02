@@ -4,6 +4,7 @@ using Freelance_Fusion.AllProjectsUCandForm;
 using Freelance_Fusion.CardsForClientDashboards;
 using Freelance_Fusion.CardsForDashboards;
 using Freelance_Fusion.Events;
+using Freelance_Fusion.PostProjectandSeeProjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +32,34 @@ namespace Freelance_Fusion.Dashboards
 
         private void AddProject_Click(object sender, EventArgs e)
         {
-            AddProjectClicked?.Invoke(this, new OnboardingEventArgs(_authenticatedClient, _uid));
+            AddProject_Clicked();
+        }
+
+        private void AddProject_Clicked()
+        {
+            AddProjectClient AP = new AddProjectClient(_authenticatedClient, _uid);
+            Panel panel = new Panel
+            {
+                Dock = DockStyle.Fill,
+                BackColor = Color.White,
+                AutoScroll = true,
+                AutoSize = false
+            };
+            Form detailForm = new Form
+            {
+                Text = "Project Details",
+                Size = new Size(1314, 891),
+                StartPosition = FormStartPosition.CenterParent,
+                BackColor = Color.White,
+                FormBorderStyle = FormBorderStyle.FixedToolWindow,
+                MaximizeBox = false,
+                MinimizeBox = false
+            };
+            detailForm.Controls.Add(panel);
+            panel.Dock = DockStyle.Fill;
+
+            panel.Controls.Add(AP);
+            detailForm.ShowDialog();
         }
 
         private async Task LoadOngoingProjects()

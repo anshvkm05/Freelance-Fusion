@@ -19,12 +19,11 @@ namespace Freelance_Fusion
 {
     public partial class LoginRegister : Form
     {
-        private readonly FirebaseClient firebaseClient = new FirebaseClient("https://freelancefusion-30sep-default-rtdb.firebaseio.com/");
         private const string FirebaseDatabaseUrl = "https://freelancefusion-30sep-default-rtdb.firebaseio.com/";
         private FirebaseClient _authenticatedClient;
         private string _uid;
-        public event EventHandler<OnboardingEventArgs> LoadMainForm;
-        public event EventHandler<OnboardingEventArgs> LoadFreelancerQuestionaries;
+        public event EventHandler<LoginCompleteEventArgs> LoginComplete;
+        public event EventHandler<OnboardingEventArgs> StartOnboarding;
         public LoginRegister()
         {
             InitializeComponent();
@@ -39,71 +38,34 @@ namespace Freelance_Fusion
             try
             {
                 _uid = e.User.Uid;
-
                 string token = await e.User.GetIdTokenAsync();
-
-                // 👇 Create the FirebaseClient (this line might be the issue)
                 _authenticatedClient = new FirebaseClient(
-                    FirebaseDatabaseUrl, // Make sure this constant is clean
+                    "https://freelancefusion-30sep-default-rtdb.firebaseio.com/",
                     new FirebaseOptions { AuthTokenAsyncFactory = () => Task.FromResult(token) }
                 );
 
-                // 👇 Try a simple connection first - just ping the root
-                Dictionary<string, object> userProfileData = await _authenticatedClient
-                                                            .Child("users")
-                                                            .Child(_uid)
-                                                            .OnceSingleAsync<Dictionary<string, object>>();
+                // Fetch the user's profile directly as a UserProfile object.
+                var userProfile = await _authenticatedClient
+                    .Child("users")
+                    .Child(_uid)
+                    .OnceSingleAsync<UserProfile>();
 
-                // Continue with the rest of the logic...
-                if (userProfileData == null)
+                // If profile is complete, signal the main form to load the correct dashboard.
+                if (userProfile != null && userProfile.IsProfileComplete)
                 {
-                    MessageBox.Show("User profile not found. Please ensure your profile is set up.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    // Optionally, you might direct them to complete their profile here
-                    LoadFreelancerQuestionaries?.Invoke(this, new OnboardingEventArgs(_authenticatedClient, _uid));
-                    this.Close();
-                    return;
-                }
-                var isProfileCompleteKey = userProfileData.Keys
-                                     .FirstOrDefault(k => k.Equals("IsProfileComplete", StringComparison.OrdinalIgnoreCase));
-
-                bool isProfileComplete = false;
-                if (isProfileCompleteKey != null)
-                {
-                    if (userProfileData.TryGetValue(isProfileCompleteKey, out object profileCompleteValue))
-                    {
-                        try
-                        {
-                            // Attempt to convert the value to boolean
-                            isProfileComplete = Convert.ToBoolean(profileCompleteValue);
-                        }
-                        catch (Exception ex)
-                        {
-                            // Handle cases where the data might be stored in a non-boolean format
-                            MessageBox.Show($"Warning: 'IsProfileComplete' for user {_uid} has an invalid format. Error: {ex.Message}. Defaulting to false.", "Data Issue", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            isProfileComplete = false;
-                        }
-                    }
-                }
-                if (isProfileComplete)
-                {
-                    LoadMainForm?.Invoke(this, new OnboardingEventArgs(_authenticatedClient, _uid));
+                    LoginComplete?.Invoke(this, new LoginCompleteEventArgs(_authenticatedClient, _uid, userProfile));
                     this.Close();
                 }
-                else
+                else // Otherwise, start the onboarding process.
                 {
-                    LoadFreelancerQuestionaries?.Invoke(this, new OnboardingEventArgs(_authenticatedClient, _uid));
+                    StartOnboarding?.Invoke(this, new OnboardingEventArgs(_authenticatedClient, _uid));
                     this.Close();
                 }
-
-                this.Close();
-
-                // Close this login form
-
             }
             catch (Exception ex)
             {
                 string errorMessage = ex.InnerException?.Message ?? ex.Message;
-                MessageBox.Show("An error occurred during login: " + errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred while checking your profile: " + errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -117,10 +79,14 @@ namespace Freelance_Fusion
         }
         private void LoginRegister_Load(object sender, EventArgs e)
         {
-            LoginUsercontorls.Login lg = new LoginUsercontorls.Login();
-            lg.SignupbtnClick += ShowSignupForm; 
+            ShowLoginForm();
+        }
+        private void ShowLoginForm(object sender = null, EventArgs e = null)
+        {
+            Login lg = new Login();
+            lg.SignupbtnClick += ShowSignupForm;
+            lg.LoginSuccessful += LoginControl_LoginSuccessful;
             LoadUC(lg);
-            lg.LoginSuccessful += LoginControl_LoginSuccessful; // This event should tell you to close the login form and load the main dashboard.
         }
         private void ShowSignupForm(object sender, EventArgs e)
         {
@@ -133,9 +99,6 @@ namespace Freelance_Fusion
         }
         private void OnFreelancerSelected(object sender, EventArgs e)
         {
-            // Raise the event to tell Form1 to open the questionnaire, PASSING THE DATA.
-            LoadFreelancerQuestionaries?.Invoke(this, new OnboardingEventArgs(_authenticatedClient, _uid));
-            // Now, close this form.
             this.Close();
         }
     }

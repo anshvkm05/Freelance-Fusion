@@ -62,6 +62,7 @@ namespace Freelance_Fusion.LoginUsercontorls
         }
         private async void RegisterUser_Click(object sender, EventArgs e)
         {
+            RegisterUser.Enabled = false; // Disable the button to prevent multiple clicks
             email = EmailTB.Text.Trim();
             password = PassowordTB.Text;
             confirmPassword = RePasswordTB.Text;
@@ -116,10 +117,12 @@ namespace Freelance_Fusion.LoginUsercontorls
             }
             catch (FirebaseAuthException ex)
             {
+                RegisterUser.Enabled = true; // Disable the button to prevent multiple clicks
                 MessageBox.Show($"Registration Failed: {ex.Reason}", "Authentication Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
+                RegisterUser.Enabled = true; // Disable the button to prevent multiple clicks
                 string errorMessage = ex.InnerException?.Message ?? ex.Message;
                 MessageBox.Show($"An unexpected error occurred: {errorMessage}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

@@ -20,11 +20,14 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
         private readonly FirebaseClient _authenticatedClient;
         private readonly string _uid;
         public event EventHandler<OnboardingEventArgs> ProfileSaved;
+        private string firstName;
+        private string lastName;
         public ClientQuestionaries(FirebaseClient authenticatedClient, string uid)
         {
             InitializeComponent();
             _authenticatedClient = authenticatedClient;
             _uid = uid;
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -39,16 +42,32 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
 
         private async void Submit_Done_Click(object sender, EventArgs e)
         {
+            if (FirstNameTB.Text == "")
+            {
+                firstName = "ClientAnsh";
+            }
+            else
+            {
+                firstName = FirstNameTB.Text;
+            }
+            if (LastNameTB.Text == "")
+            {
+                lastName = "Maurya";
+            }
+            else
+            {
+                lastName = LastNameTB.Text;
+            }
             try
             {
                 var profileData = new Dictionary<string, object>
                 {
                     // Replace with int.Parse(AgeTB.Text)
-                    ["ContactEmail"] = "user@example.com", // Get from form
-                    ["UserType"] = "Freelancer", // Replace with EmailTB.Text
+                    ["ContactEmail"] = "Clientuser@example.com", // Get from form
+                    ["UserType"] = "Client", // Replace with EmailTB.Text
                     ["IsProfileComplete"] = true, // Set to true after submission
-                    ["FirstName"] = "Ansh",
-                    ["LastName"] = "Maurya",
+                    ["FirstName"] = firstName,
+                    ["LastName"] = lastName,
                     ["Gender"] = "Male",
                     ["Age"] = int.Parse("34"),
                     ["PhoneNumber"] = "8356824894",
@@ -56,7 +75,7 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
                     ["CompanyURL"] = "google.com",
                     ["Country"] = "India",
                     ["State"] = "Maharashtra",
-                    ["Industry"] = "IT",
+                    ["Industry"] = "ITcommerce",
 
                 };
                 // 3. Use the authenticated client to save the completed profile to the database
