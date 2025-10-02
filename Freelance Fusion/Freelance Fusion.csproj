@@ -79,19 +79,33 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllProjectsUCandForm\ProjectDetailForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AllProjectsUCandForm\ProjectDetailForm.Designer.cs">
-      <DependentUpon>ProjectDetailForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AllProjectsUCandForm\ProjectDetailUC.cs">
+    <Compile Include="AllProjectsUCandForm\Client\BiddersUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AllProjectsUCandForm\ProjectDetailUC.Designer.cs">
+    <Compile Include="AllProjectsUCandForm\Client\BiddersUC.Designer.cs">
+      <DependentUpon>BiddersUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AllProjectsUCandForm\Client\BidEventArgs.cs" />
+    <Compile Include="AllProjectsUCandForm\Freelancer\Bid.cs" />
+    <Compile Include="AllProjectsUCandForm\Client\ProjectDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllProjectsUCandForm\Client\ProjectDetailForm.Designer.cs">
+      <DependentUpon>ProjectDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AllProjectsUCandForm\Client\ProjectDetailUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AllProjectsUCandForm\Client\ProjectDetailUC.Designer.cs">
       <DependentUpon>ProjectDetailUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="AllProjectsUCandForm\ProjectEventArgs.cs" />
+    <Compile Include="AllProjectsUCandForm\Client\ProjectEventArgs.cs" />
+    <Compile Include="AllProjectsUCandForm\Freelancer\ProjectDetail_Bidding.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AllProjectsUCandForm\Freelancer\ProjectDetail_Bidding.Designer.cs">
+      <DependentUpon>ProjectDetail_Bidding.cs</DependentUpon>
+    </Compile>
     <Compile Include="CardsForClientDashboards\OnGoingProjectCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -195,14 +209,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AllProjectsUCandForm\ProjectDetailForm.resx">
+    <EmbeddedResource Include="AllProjectsUCandForm\Client\BiddersUC.resx">
+      <DependentUpon>BiddersUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllProjectsUCandForm\Client\ProjectDetailForm.resx">
       <DependentUpon>ProjectDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AllProjectsUCandForm\ProjectDetailUC.resx">
+    <EmbeddedResource Include="AllProjectsUCandForm\Client\ProjectDetailUC.resx">
       <DependentUpon>ProjectDetailUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllProjectsUCandForm\Freelancer\ProjectDetail_Bidding.resx">
+      <DependentUpon>ProjectDetail_Bidding.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CardsForClientDashboards\OnGoingProjectCard.resx">
       <DependentUpon>OnGoingProjectCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsForFreelancerDashboard\RecommendedProjectCard.resx">
+      <DependentUpon>RecommendedProjectCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboards\ClientDashboard.resx">
       <DependentUpon>ClientDashboard.cs</DependentUpon>

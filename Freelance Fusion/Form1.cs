@@ -94,7 +94,7 @@ namespace Freelance_Fusion
 
             using (LoginRegister lr = new LoginRegister())
             {
-                lr.LoadMainForm += ShowClientDashboard;
+                lr.LoadMainForm += ShowMainDashboard;
                 lr.LoadFreelancerQuestionaries += ShowFLQuestionariesUC;
                 overlayform.Show();
                 lr.Owner = overlayform;

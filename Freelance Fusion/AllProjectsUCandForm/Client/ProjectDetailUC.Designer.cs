@@ -33,7 +33,6 @@
             this.ProjectDesRichTB = new System.Windows.Forms.RichTextBox();
             this.flpTags = new System.Windows.Forms.FlowLayoutPanel();
             this.RTDetailProjectDescription = new System.Windows.Forms.RichTextBox();
-            this.RTRequiredSkiils = new System.Windows.Forms.RichTextBox();
             this.RTDeadline = new System.Windows.Forms.RichTextBox();
             this.RTStartDate = new System.Windows.Forms.RichTextBox();
             this.RTReviews = new System.Windows.Forms.RichTextBox();
@@ -42,6 +41,7 @@
             this.RTAveragePrice = new System.Windows.Forms.RichTextBox();
             this.flpBids = new System.Windows.Forms.FlowLayoutPanel();
             this.progressBar = new System.Windows.Forms.RichTextBox();
+            this.RTRequiredSkiils = new Guna.UI2.WinForms.Guna2TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -75,6 +75,7 @@
             this.ProjectDesRichTB.Size = new System.Drawing.Size(1072, 76);
             this.ProjectDesRichTB.TabIndex = 3;
             this.ProjectDesRichTB.Text = "Project description";
+            this.ProjectDesRichTB.TextChanged += new System.EventHandler(this.ProjectDesRichTB_TextChanged);
             // 
             // flpTags
             // 
@@ -83,6 +84,7 @@
             this.flpTags.Name = "flpTags";
             this.flpTags.Size = new System.Drawing.Size(1072, 92);
             this.flpTags.TabIndex = 11;
+            this.flpTags.Paint += new System.Windows.Forms.PaintEventHandler(this.flpTags_Paint);
             // 
             // RTDetailProjectDescription
             // 
@@ -97,20 +99,7 @@
             this.RTDetailProjectDescription.Size = new System.Drawing.Size(1091, 140);
             this.RTDetailProjectDescription.TabIndex = 12;
             this.RTDetailProjectDescription.Text = "Project description";
-            // 
-            // RTRequiredSkiils
-            // 
-            this.RTRequiredSkiils.BackColor = System.Drawing.Color.White;
-            this.RTRequiredSkiils.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RTRequiredSkiils.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.RTRequiredSkiils.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RTRequiredSkiils.Location = new System.Drawing.Point(117, 611);
-            this.RTRequiredSkiils.Name = "RTRequiredSkiils";
-            this.RTRequiredSkiils.ReadOnly = true;
-            this.RTRequiredSkiils.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
-            this.RTRequiredSkiils.Size = new System.Drawing.Size(1072, 140);
-            this.RTRequiredSkiils.TabIndex = 13;
-            this.RTRequiredSkiils.Text = "Skills ";
+            this.RTDetailProjectDescription.TextChanged += new System.EventHandler(this.RTDetailProjectDescription_TextChanged);
             // 
             // RTDeadline
             // 
@@ -126,6 +115,7 @@
             this.RTDeadline.Size = new System.Drawing.Size(151, 24);
             this.RTDeadline.TabIndex = 14;
             this.RTDeadline.Text = "None";
+            this.RTDeadline.TextChanged += new System.EventHandler(this.RTDeadline_TextChanged);
             // 
             // RTStartDate
             // 
@@ -141,6 +131,7 @@
             this.RTStartDate.Size = new System.Drawing.Size(151, 24);
             this.RTStartDate.TabIndex = 15;
             this.RTStartDate.Text = "None";
+            this.RTStartDate.TextChanged += new System.EventHandler(this.RTStartDate_TextChanged);
             // 
             // RTReviews
             // 
@@ -156,6 +147,7 @@
             this.RTReviews.Size = new System.Drawing.Size(984, 24);
             this.RTReviews.TabIndex = 16;
             this.RTReviews.Text = "None";
+            this.RTReviews.TextChanged += new System.EventHandler(this.RTReviews_TextChanged);
             // 
             // RTDeliverables
             // 
@@ -170,6 +162,7 @@
             this.RTDeliverables.Size = new System.Drawing.Size(1072, 154);
             this.RTDeliverables.TabIndex = 17;
             this.RTDeliverables.Text = "All project Deliverables";
+            this.RTDeliverables.TextChanged += new System.EventHandler(this.RTDeliverables_TextChanged);
             // 
             // RTExpectedPrice
             // 
@@ -185,6 +178,7 @@
             this.RTExpectedPrice.Size = new System.Drawing.Size(200, 43);
             this.RTExpectedPrice.TabIndex = 18;
             this.RTExpectedPrice.Text = "None";
+            this.RTExpectedPrice.TextChanged += new System.EventHandler(this.RTExpectedPrice_TextChanged);
             // 
             // RTAveragePrice
             // 
@@ -200,13 +194,14 @@
             this.RTAveragePrice.Size = new System.Drawing.Size(202, 43);
             this.RTAveragePrice.TabIndex = 19;
             this.RTAveragePrice.Text = "None";
+            this.RTAveragePrice.TextChanged += new System.EventHandler(this.RTAveragePrice_TextChanged);
             // 
             // flpBids
             // 
             this.flpBids.BackColor = System.Drawing.Color.White;
-            this.flpBids.Location = new System.Drawing.Point(117, 1494);
+            this.flpBids.Location = new System.Drawing.Point(117, 1487);
             this.flpBids.Name = "flpBids";
-            this.flpBids.Size = new System.Drawing.Size(1146, 287);
+            this.flpBids.Size = new System.Drawing.Size(1146, 319);
             this.flpBids.TabIndex = 12;
             // 
             // progressBar
@@ -224,6 +219,34 @@
             this.progressBar.TabIndex = 20;
             this.progressBar.Text = "None";
             // 
+            // RTRequiredSkiils
+            // 
+            this.RTRequiredSkiils.Animated = true;
+            this.RTRequiredSkiils.AutoScroll = true;
+            this.RTRequiredSkiils.BackColor = System.Drawing.Color.White;
+            this.RTRequiredSkiils.BorderColor = System.Drawing.Color.Silver;
+            this.RTRequiredSkiils.BorderRadius = 5;
+            this.RTRequiredSkiils.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.RTRequiredSkiils.DefaultText = "";
+            this.RTRequiredSkiils.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.RTRequiredSkiils.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.RTRequiredSkiils.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.RTRequiredSkiils.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.RTRequiredSkiils.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(43)))), ((int)(((byte)(1)))));
+            this.RTRequiredSkiils.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.RTRequiredSkiils.ForeColor = System.Drawing.Color.Black;
+            this.RTRequiredSkiils.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.RTRequiredSkiils.Location = new System.Drawing.Point(117, 613);
+            this.RTRequiredSkiils.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.RTRequiredSkiils.Multiline = true;
+            this.RTRequiredSkiils.Name = "RTRequiredSkiils";
+            this.RTRequiredSkiils.PasswordChar = '\0';
+            this.RTRequiredSkiils.PlaceholderText = "Tell about your experience, and services, etc.";
+            this.RTRequiredSkiils.SelectedText = "";
+            this.RTRequiredSkiils.Size = new System.Drawing.Size(1091, 140);
+            this.RTRequiredSkiils.TabIndex = 23;
+            this.RTRequiredSkiils.TextChanged += new System.EventHandler(this.RTRequiredSkiils_TextChanged);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -238,6 +261,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.RTRequiredSkiils);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.flpBids);
             this.Controls.Add(this.RTAveragePrice);
@@ -246,7 +270,6 @@
             this.Controls.Add(this.RTReviews);
             this.Controls.Add(this.RTStartDate);
             this.Controls.Add(this.RTDeadline);
-            this.Controls.Add(this.RTRequiredSkiils);
             this.Controls.Add(this.RTDetailProjectDescription);
             this.Controls.Add(this.flpTags);
             this.Controls.Add(this.ProjectDesRichTB);
@@ -254,6 +277,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "ProjectDetailUC";
             this.Size = new System.Drawing.Size(1334, 1828);
+            this.Load += new System.EventHandler(this.ProjectDetailUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -266,7 +290,6 @@
         private System.Windows.Forms.RichTextBox ProjectDesRichTB;
         private System.Windows.Forms.FlowLayoutPanel flpTags;
         private System.Windows.Forms.RichTextBox RTDetailProjectDescription;
-        private System.Windows.Forms.RichTextBox RTRequiredSkiils;
         private System.Windows.Forms.RichTextBox RTDeadline;
         private System.Windows.Forms.RichTextBox RTStartDate;
         private System.Windows.Forms.RichTextBox RTReviews;
@@ -275,5 +298,6 @@
         private System.Windows.Forms.RichTextBox RTAveragePrice;
         private System.Windows.Forms.FlowLayoutPanel flpBids;
         private System.Windows.Forms.RichTextBox progressBar;
+        private Guna.UI2.WinForms.Guna2TextBox RTRequiredSkiils;
     }
 }

@@ -5271,4 +5271,28 @@
         IzYBAAAAgB2xCQAAAADsiE0AAAAAYEdsAgAAAAA7YhMAAAAA2AluasSKgj9wkwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btnRecScrollRight.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABMAAAAsCAYAAACHfIO0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAJ1JREFUSEvt0kENBCEMheE6wAEOUIIhHCAMBzjAAQ7YMIfJBhbal2UOk/TwXyj5
+        ElKIiNrBqNVa/04xPMXwFMN7KZZzbjHG6XzVFnPOXRdCCNPsV1sspdSMMWJwi6EgiyGgCBvB1VLEWCnl
+        Xoj3fpqLsW/IWnt9mfGOCJNCLIZALIZALNa/gRRisV5/6ni2isWQFMNTDE8xvGewU30AFW7IPZcBTAwA
+        AAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnRecScrollLeft.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABMAAAAsCAYAAACHfIO0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAJVJREFUSEvt0UENwCAMheE6QAnCcIADhOEABzjAAUuXbFlgjL6My5Ye/hAofBeI
+        iOrCqJZSXqcYnmJ4iuH9BMs5V+99dw5jDFlr9wcjUIRdIV55394RYVJoiiHQFEOgR4wfG2P2C865bn7X
+        EONijCc4+kExhoJTDAFFWAuGELo5hB0g/2xKqZvB2CzF8BTDUwzvA9iqNvCXyrO1lcf0AAAAAElFTkSu
+        QmCC
+</value>
+  </data>
+  <metadata name="scrollTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 5</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
+  </metadata>
 </root>
