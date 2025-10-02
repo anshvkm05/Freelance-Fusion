@@ -67,6 +67,7 @@ namespace Freelance_Fusion.AllProjectsUCandForm.Freelancer
 
         private async void btnSubmitProject_Click(object sender, EventArgs e)
         {
+            btnSubmitProject.Enabled = false; // Prevent multiple clicks
             if (_progress < 100)
             {
                 MessageBox.Show("You can only submit the project when the progress is 100%.", "Update Progress First", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -116,6 +117,7 @@ namespace Freelance_Fusion.AllProjectsUCandForm.Freelancer
                 }
                 catch (Exception ex)
                 {
+                    btnSubmitProject.Enabled = true; // Re-enable on failure
                     MessageBox.Show($"Failed to submit project: {ex.Message}", "Error");
                 }
             }
@@ -123,6 +125,7 @@ namespace Freelance_Fusion.AllProjectsUCandForm.Freelancer
 
         private async void BtnUpdateProgress_Click(object sender, EventArgs e)
         {
+            BtnUpdateProgress.Enabled = false; // Prevent multiple clicks
             try
             {
                 // Use PatchAsync to update only the 'Progress' field in the database
@@ -138,6 +141,7 @@ namespace Freelance_Fusion.AllProjectsUCandForm.Freelancer
             }
             catch (Exception ex)
             {
+                BtnUpdateProgress.Enabled = true;
                 MessageBox.Show($"Failed to update progress: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 // Revert the local change if the database update fails
                 lblProgressPercentage.Text = _project.Progress.ToString() + "%";
@@ -157,6 +161,7 @@ namespace Freelance_Fusion.AllProjectsUCandForm.Freelancer
 
         private void Add5percenttoProgress_Click(object sender, EventArgs e)
         {
+            BtnUpdateProgress.Enabled = true; 
             if ( _progress >= 100 ) return;
             _progress = Math.Min(100, _progress + 5); // Ensure it doesn't exceed 100
             lblProgressPercentage.Text = _progress.ToString() + "%";
@@ -164,6 +169,7 @@ namespace Freelance_Fusion.AllProjectsUCandForm.Freelancer
 
         private void Subtract5percenttoProgress_Click(object sender, EventArgs e)
         {
+            BtnUpdateProgress.Enabled = true;
             if ( _progress <= 0 ) return;
             _progress = Math.Max(0, _progress - 5); // Ensure it doesn't go below 0
             lblProgressPercentage.Text = _progress.ToString() + "%";

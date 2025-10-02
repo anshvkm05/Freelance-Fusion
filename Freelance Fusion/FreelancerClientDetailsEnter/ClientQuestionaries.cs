@@ -42,6 +42,7 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
 
         private async void Submit_Done_Click(object sender, EventArgs e)
         {
+            Submit_Done.Enabled = false; // Prevent multiple submissions
             if (FirstNameTB.Text == "")
             {
                 firstName = "ClientAnsh";
@@ -91,6 +92,7 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
             }
             catch (Exception ex)
             {
+                Submit_Done.Enabled = true; // Re-enable the button on error
                 MessageBox.Show($"An error occurred while saving your profile: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

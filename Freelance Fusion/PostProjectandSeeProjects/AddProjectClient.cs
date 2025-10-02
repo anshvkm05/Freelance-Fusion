@@ -29,6 +29,7 @@ namespace Freelance_Fusion.PostProjectandSeeProjects
 
         private async void Post_Project_Click(object sender, EventArgs e)
         {
+            Post_Project.Enabled = false; // Prevent multiple submissions
             // You can add validation logic here later, similar to the Register form.
             // For now, we will proceed directly to saving.
 
@@ -105,6 +106,7 @@ namespace Freelance_Fusion.PostProjectandSeeProjects
             }
             catch (Exception ex)
             {
+                Post_Project.Enabled = true; // Re-enable the button on error
                 MessageBox.Show($"An error occurred while posting the project: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

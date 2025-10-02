@@ -44,6 +44,7 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
 
         private async void Submit_Done_Click(object sender, EventArgs e)
         {
+            Submit_Done.Enabled = false; // Prevent multiple submissions
             if (FirstNameTB.Text == "")
             {
                 firstName = "FreelancerAnsh";
@@ -100,6 +101,7 @@ namespace Freelance_Fusion.FreelancerClientDetailsEnter
 
         private void ClientBtn_Click(object sender, EventArgs e)
         {
+            Submit_Done.Enabled = true; // Re-enable the button for future use
             ClientSelectedFQ?.Invoke(this, new OnboardingEventArgs(_authenticatedClient, _uid));
         }
     }
