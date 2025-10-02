@@ -2957,7 +2957,7 @@
         TkSuQmCC
 </value>
   </data>
-  <data name="Add5percenttoProgress.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Add5percenttoProgress.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EgAACxIB0t1+/AAAEXZJREFUeF7tXAtwVdUVPba+9/IhJEGSmIohmIgY0YDATFEpDOKo+AUMGgjIJwn5
@@ -3038,7 +3038,7 @@
         rkJggg==
 </value>
   </data>
-  <data name="Subtract5percenttoProgress.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="guna2CircleButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EgAACxIB0t1+/AAAEL9JREFUeF7tXHuMlNUVv2hnZh8sC7iAVFTUVVvU6orG1qQNvlLS1DYxakzbINGm

@@ -92,7 +92,7 @@ namespace Freelance_Fusion.Dashboards
                         RecommendedProjectCard card = new RecommendedProjectCard();
                         card.Populate(project.Object);
 
-                        card.CardClicked += OnGoingProjectCard_Clicked;
+                        card.CardClicked += OnRecommendedProjectCard_Clicked;
                         card.WireClickEvents(); // Ensure clicks are registered
                         flpRecommendedProjects.Controls.Add(card);
                     }
@@ -137,7 +137,7 @@ namespace Freelance_Fusion.Dashboards
                 {
                     OnGoingProjectCard card = new OnGoingProjectCard();
                     card.Populate(project);
-                    card.CardClicked += OnRecommendedProjectCard_Clicked; // Reuse the same click handler
+                    card.CardClicked += OnGoingProjectCard_Clicked; // Reuse the same click handler
                     flpOngoingProjects.Controls.Add(card);
                 }
             }

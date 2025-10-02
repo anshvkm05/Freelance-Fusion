@@ -46,9 +46,9 @@
             this.TBEnterProjectLink = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblProgressPercentage = new System.Windows.Forms.RichTextBox();
             this.Add5percenttoProgress = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.Subtract5percenttoProgress = new Guna.UI2.WinForms.Guna2CircleButton();
             this.BtnUpdateProgress = new Guna.UI2.WinForms.Guna2Button();
             this.lblUpdateProjectProgress = new System.Windows.Forms.RichTextBox();
+            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -308,39 +308,23 @@
             // 
             // Add5percenttoProgress
             // 
-            this.Add5percenttoProgress.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Add5percenttoProgress.BackgroundImage")));
-            this.Add5percenttoProgress.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Add5percenttoProgress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.Add5percenttoProgress.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Add5percenttoProgress.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Add5percenttoProgress.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Add5percenttoProgress.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.Add5percenttoProgress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.Add5percenttoProgress.FillColor = System.Drawing.Color.Transparent;
             this.Add5percenttoProgress.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Add5percenttoProgress.ForeColor = System.Drawing.Color.White;
-            this.Add5percenttoProgress.Location = new System.Drawing.Point(810, 1323);
+            this.Add5percenttoProgress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.Add5percenttoProgress.Image = ((System.Drawing.Image)(resources.GetObject("Add5percenttoProgress.Image")));
+            this.Add5percenttoProgress.ImageSize = new System.Drawing.Size(70, 70);
+            this.Add5percenttoProgress.Location = new System.Drawing.Point(813, 1322);
             this.Add5percenttoProgress.Name = "Add5percenttoProgress";
             this.Add5percenttoProgress.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.Add5percenttoProgress.Size = new System.Drawing.Size(88, 77);
             this.Add5percenttoProgress.TabIndex = 43;
             this.Add5percenttoProgress.Click += new System.EventHandler(this.Add5percenttoProgress_Click);
-            // 
-            // Subtract5percenttoProgress
-            // 
-            this.Subtract5percenttoProgress.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Subtract5percenttoProgress.BackgroundImage")));
-            this.Subtract5percenttoProgress.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Subtract5percenttoProgress.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.Subtract5percenttoProgress.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.Subtract5percenttoProgress.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.Subtract5percenttoProgress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.Subtract5percenttoProgress.FillColor = System.Drawing.Color.Transparent;
-            this.Subtract5percenttoProgress.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Subtract5percenttoProgress.ForeColor = System.Drawing.Color.White;
-            this.Subtract5percenttoProgress.Location = new System.Drawing.Point(409, 1323);
-            this.Subtract5percenttoProgress.Name = "Subtract5percenttoProgress";
-            this.Subtract5percenttoProgress.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.Subtract5percenttoProgress.Size = new System.Drawing.Size(88, 77);
-            this.Subtract5percenttoProgress.TabIndex = 44;
-            this.Subtract5percenttoProgress.Click += new System.EventHandler(this.Subtract5percenttoProgress_Click);
             // 
             // BtnUpdateProgress
             // 
@@ -379,13 +363,32 @@
             this.lblUpdateProjectProgress.Text = "Update Project Progress";
             this.lblUpdateProjectProgress.Visible = false;
             // 
+            // guna2CircleButton1
+            // 
+            this.guna2CircleButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.guna2CircleButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.guna2CircleButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2CircleButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2CircleButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2CircleButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2CircleButton1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2CircleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2CircleButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.guna2CircleButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CircleButton1.Image")));
+            this.guna2CircleButton1.ImageSize = new System.Drawing.Size(70, 70);
+            this.guna2CircleButton1.Location = new System.Drawing.Point(411, 1322);
+            this.guna2CircleButton1.Name = "guna2CircleButton1";
+            this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CircleButton1.Size = new System.Drawing.Size(88, 77);
+            this.guna2CircleButton1.TabIndex = 47;
+            // 
             // OnGoingProjectDetailUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.guna2CircleButton1);
             this.Controls.Add(this.lblUpdateProjectProgress);
             this.Controls.Add(this.BtnUpdateProgress);
-            this.Controls.Add(this.Subtract5percenttoProgress);
             this.Controls.Add(this.Add5percenttoProgress);
             this.Controls.Add(this.lblProgressPercentage);
             this.Controls.Add(this.TBEnterProjectLink);
@@ -429,8 +432,8 @@
         private Guna.UI2.WinForms.Guna2TextBox TBEnterProjectLink;
         private System.Windows.Forms.RichTextBox lblProgressPercentage;
         private Guna.UI2.WinForms.Guna2CircleButton Add5percenttoProgress;
-        private Guna.UI2.WinForms.Guna2CircleButton Subtract5percenttoProgress;
         private Guna.UI2.WinForms.Guna2Button BtnUpdateProgress;
         private System.Windows.Forms.RichTextBox lblUpdateProjectProgress;
+        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
     }
 }
