@@ -18,6 +18,7 @@ namespace Freelance_Fusion.AllProjectsUCandForm
     {
         private readonly FirebaseClient _authenticatedClient;
         private readonly ProjectClient _project;
+        private int _FreelancerProjectRating;
         public ProjectDetailUC(FirebaseClient authenticatedClient, CardsForClientDashboards.ProjectClient project)
         {
             InitializeComponent();
@@ -27,6 +28,19 @@ namespace Freelance_Fusion.AllProjectsUCandForm
 
         private void PopulateDetails()
         {
+            if (_project.Progress == 100 || _project.Status == "Completed") 
+            { 
+                btnPayforProject.Visible = true;
+                lblRate.Visible = true;
+                rate1.Visible = true;
+                rate2.Visible = true;
+                rate3.Visible = true;
+                rate4.Visible = true;
+                rate5.Visible = true;
+                RTReviewLink.Visible = true;
+                lblReviewLink.Visible = true;
+                flpBids.Visible = false;
+            }
             RTProjectTitle.Text = _project.Title;
             ProjectDesRichTB.Text = _project.Description; // Brief description
 
@@ -166,6 +180,47 @@ namespace Freelance_Fusion.AllProjectsUCandForm
                 }
             }
         }
+        
+
+        private async void ProjectDetailUC_Load(object sender, EventArgs e)
+        {
+            PopulateDetails();
+            if (_project.Status == "Open") 
+            {
+                flpBids.Visible = true;
+                await LoadBids();
+            }
+                
+        }
+
+        private void rate1_Click(object sender, EventArgs e)
+        {
+            _FreelancerProjectRating = 1;
+        }
+
+        private void rate2_Click(object sender, EventArgs e)
+        {
+            _FreelancerProjectRating = 2;
+        }
+
+        private void rate3_Click(object sender, EventArgs e)
+        {
+            _FreelancerProjectRating = 3;
+        }
+
+        private void rate4_Click(object sender, EventArgs e)
+        {
+            _FreelancerProjectRating = 4;
+        }
+
+        private void rate5_Click(object sender, EventArgs e)
+        {
+            _FreelancerProjectRating = 5;
+        }
+        private void btnSubmitProject_Click(object sender, EventArgs e)
+        {
+
+        }
         private void ProjectDesRichTB_TextChanged(object sender, EventArgs e)
         {
 
@@ -216,10 +271,6 @@ namespace Freelance_Fusion.AllProjectsUCandForm
 
         }
 
-        private async void ProjectDetailUC_Load(object sender, EventArgs e)
-        {
-            PopulateDetails();
-            await LoadBids();
-        }
+        
     }
 }
