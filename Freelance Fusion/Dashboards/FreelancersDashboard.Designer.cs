@@ -42,6 +42,8 @@
             this.btnRecScrollRight = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnRecScrollLeft = new Guna.UI2.WinForms.Guna2TileButton();
             this.scrollTimer = new System.Windows.Forms.Timer(this.components);
+            this.OngoingScroll = new Guna.UI2.WinForms.Guna2TileButton();
+            this.ongoingScrollTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlOngoingProjectsContainer.SuspendLayout();
             this.pnlRecommendedProjectsContainer.SuspendLayout();
@@ -185,10 +187,34 @@
             this.scrollTimer.Interval = 20;
             this.scrollTimer.Tick += new System.EventHandler(this.scrollTimer_Tick);
             // 
+            // OngoingScroll
+            // 
+            this.OngoingScroll.Animated = true;
+            this.OngoingScroll.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OngoingScroll.BackgroundImage")));
+            this.OngoingScroll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.OngoingScroll.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.OngoingScroll.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.OngoingScroll.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.OngoingScroll.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.OngoingScroll.FillColor = System.Drawing.Color.Transparent;
+            this.OngoingScroll.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.OngoingScroll.ForeColor = System.Drawing.Color.White;
+            this.OngoingScroll.Location = new System.Drawing.Point(1275, 468);
+            this.OngoingScroll.Name = "OngoingScroll";
+            this.OngoingScroll.Size = new System.Drawing.Size(24, 57);
+            this.OngoingScroll.TabIndex = 45;
+            this.OngoingScroll.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OngoingScroll_MouseDown);
+            this.OngoingScroll.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OngoingScroll_MouseUp);
+            // 
+            // ongoingScrollTimer
+            // 
+            this.ongoingScrollTimer.Tick += new System.EventHandler(this.ongoingScrollTimer_Tick);
+            // 
             // FreelancersDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.OngoingScroll);
             this.Controls.Add(this.btnRecScrollLeft);
             this.Controls.Add(this.btnRecScrollRight);
             this.Controls.Add(this.pnlCompletedProjects);
@@ -222,5 +248,7 @@
         private Guna.UI2.WinForms.Guna2TileButton btnRecScrollRight;
         private Guna.UI2.WinForms.Guna2TileButton btnRecScrollLeft;
         private System.Windows.Forms.Timer scrollTimer;
+        private Guna.UI2.WinForms.Guna2TileButton OngoingScroll;
+        private System.Windows.Forms.Timer ongoingScrollTimer;
     }
 }

@@ -70,5 +70,17 @@ namespace Freelance_Fusion.CardsForDashboards
                 MessageBox.Show("Error: Project data is not available.", "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (_projectData != null)
+            {
+                CardClicked?.Invoke(this, new ProjectEventArgs(_projectData));
+            }
+            else
+            {
+                MessageBox.Show("Error: Project data is not available.", "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

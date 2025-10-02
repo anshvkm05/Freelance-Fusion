@@ -84,7 +84,12 @@ namespace Freelance_Fusion.Dashboards
         }
         private void OnProjectCard_Clicked(object sender, ProjectEventArgs e)
         {
-            ProjectDetailUC detailUC = new ProjectDetailUC(e.Project);
+            if (e.Project == null)
+            {
+                MessageBox.Show("Cannot open details: project data is missing.", "Error");
+                return;
+            }
+            ProjectDetailUC detailUC = new ProjectDetailUC(_authenticatedClient, e.Project);
             Panel panel = new Panel
             {
                 Dock = DockStyle.Fill,

@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using Firebase.Database;
 using Firebase.Database.Query;
 using Freelance_Fusion.AllProjectsUCandForm.Client;
-using Freelance_Fusion.CardsForClientDashboards;
 using Freelance_Fusion.Events;
 using Freelance_Fusion.FreelancerClientDetailsEnter;
 using Freelance_Fusion.Models;
-using System;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
@@ -118,19 +116,53 @@ namespace Freelance_Fusion.AllProjectsUCandForm
             {
                 try
                 {
-                    // --- TODO: Implement the logic to accept a bid ---
-                    // This would involve:
-                    // 1. Updating the project's status to "In Progress" in the '/projects' node.
-                    // 2. Updating this bid's status to "Accepted" in the '/bids' node.
-                    // 3. Updating all other bids for this project to "Rejected".
-                    // 4. Adding the project to the freelancer's 'ongoingProjects' list in their user profile.
+                    // --- FAN-OUT WRITE OPERATION ---
 
-                    MessageBox.Show("Bid accepted successfully! The project is now in progress.", "Success");
-                    // Optionally, refresh the view or close the form.
+                    // 1. Update the project's status and assign the freelancer.
+                    await _authenticatedClient
+                        .Child("projects")
+                        .Child(selectedBid.ProjectID)
+                        .PatchAsync(new
+                        {
+                            Status = "In Progress",
+                            AcceptedFreelancerID = selectedBid.FreelancerID,
+                            FinalPrice = selectedBid.BidAmount
+                        });
+
+                    // 2. Update the winning bid's status.
+                    await _authenticatedClient
+                        .Child("bids")
+                        .Child(selectedBid.ProjectID)
+                        .Child(selectedBid.FreelancerID)
+                        .PatchAsync(new { Status = "Accepted" });
+
+                    // 3. Add the project to the freelancer's 'ongoingProjects' list for efficient fetching.
+                    await _authenticatedClient
+                        .Child("users")
+                        .Child(selectedBid.FreelancerID)
+                        .Child("ongoingProjects")
+                        .Child(selectedBid.ProjectID)
+                        .PutAsync(true);
+
+
+                    // 4. Loop through all other bids for this project and update their status to "Rejected".
+                    var allBids = await _authenticatedClient.Child("bids").Child(selectedBid.ProjectID).OnceAsync<Bid>();
+                    foreach (var bid in allBids)
+                    {
+                        if (bid.Key != selectedBid.FreelancerID)
+                        {
+                            await _authenticatedClient.Child("bids").Child(selectedBid.ProjectID).Child(bid.Key).PatchAsync(new { Status = "Rejected" });
+                        }
+                    }
+
+                    MessageBox.Show("Bid accepted successfully! The project is now in progress.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Refresh the bids to reflect the "Accepted" status
+                    await LoadBids();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Failed to accept bid: {ex.Message}", "Error");
+                    MessageBox.Show($"Failed to accept bid: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

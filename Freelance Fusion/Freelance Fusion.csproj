@@ -100,6 +100,12 @@
       <DependentUpon>ProjectDetailUC.cs</DependentUpon>
     </Compile>
     <Compile Include="AllProjectsUCandForm\Client\ProjectEventArgs.cs" />
+    <Compile Include="AllProjectsUCandForm\Freelancer\OnGoingProjectDetailUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AllProjectsUCandForm\Freelancer\OnGoingProjectDetailUC.Designer.cs">
+      <DependentUpon>OnGoingProjectDetailUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="AllProjectsUCandForm\Freelancer\ProjectDetail_Bidding.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -217,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AllProjectsUCandForm\Client\ProjectDetailUC.resx">
       <DependentUpon>ProjectDetailUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllProjectsUCandForm\Freelancer\OnGoingProjectDetailUC.resx">
+      <DependentUpon>OnGoingProjectDetailUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AllProjectsUCandForm\Freelancer\ProjectDetail_Bidding.resx">
       <DependentUpon>ProjectDetail_Bidding.cs</DependentUpon>

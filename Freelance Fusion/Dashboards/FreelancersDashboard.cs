@@ -1,7 +1,9 @@
 ﻿using Firebase.Database;
+using Firebase.Database.Query;
 using Freelance_Fusion.AllProjectsUCandForm;
 using Freelance_Fusion.AllProjectsUCandForm.Freelancer;
 using Freelance_Fusion.CardsForClientDashboards;
+using Freelance_Fusion.CardsForDashboards;
 using Freelance_Fusion.CardsForFreelancerDashboard;
 using Freelance_Fusion.Events;
 using System;
@@ -21,6 +23,7 @@ namespace Freelance_Fusion.Dashboards
         private readonly FirebaseClient _authenticatedClient;
         private readonly string _uid;
         private int _scrollAmount = 0;
+        private int _ongoingScrollAmount = 0;
         public FreelancersDashboard(FirebaseClient authenticatedClient, string uid)
         {
             InitializeComponent();
@@ -32,34 +35,65 @@ namespace Freelance_Fusion.Dashboards
         {
 
         }
+        private void OnGoingProjectCard_Clicked(object sender, ProjectEventArgs e)
+        {
+            if (e.Project == null)
+            {
+                MessageBox.Show("Cannot open details: project data is missing.", "Error");
+                return;
+            }
+            OnGoingProjectDetailUC Ongoingprojectdetailuc = new OnGoingProjectDetailUC(_authenticatedClient, _uid, e.Project);
+            Panel panel = new Panel
+            {
+                Dock = DockStyle.Fill,
+                BackColor = Color.White,
+                AutoScroll = true,
+                AutoSize = false
+            };
+            Form detailForm = new Form
+            {
+                Text = "Project Details",
+                Size = new Size(1370, 937),
+                StartPosition = FormStartPosition.CenterParent,
+                BackColor = Color.White,
+                FormBorderStyle = FormBorderStyle.FixedToolWindow,
+                MaximizeBox = false,
+                MinimizeBox = false
+            };
+            detailForm.Controls.Add(panel);
+            panel.Dock = DockStyle.Fill;
+
+            panel.Controls.Add(Ongoingprojectdetailuc);
+            detailForm.ShowDialog();
+        }
         private async Task LoadRecommendedProjects()
         {
             try
             {
-                // 1. Fetch all projects from the top-level 'projects' node.
-                // Your Firebase rules allow any authenticated user to read this list.
-                var allProjects = await _authenticatedClient
+                // 1. Fetch only projects where the "Status" field is equal to "Open".
+                // This is a server-side query and is highly efficient.
+                var openProjects = await _authenticatedClient
                     .Child("projects")
+                    .OrderBy("Status")
+                    .EqualTo("Open")
                     .OnceAsync<ProjectClient>();
 
-                // If there are no projects in the database, do nothing.
-                if (allProjects == null || !allProjects.Any())
+                if (openProjects == null || !openProjects.Any())
                 {
+                    flpRecommendedProjects.Controls.Clear(); // Clear if no projects are found
                     return;
                 }
 
-                // 2. Clear any existing cards from the panel.
                 flpRecommendedProjects.Controls.Clear();
-
-                // 3. Create a card for each project and add it to the FlowLayoutPanel.
-                foreach (var project in allProjects)
+                foreach (var project in openProjects)
                 {
-                    // Make sure the project data is not null
                     if (project.Object != null)
                     {
                         RecommendedProjectCard card = new RecommendedProjectCard();
                         card.Populate(project.Object);
-                        card.CardClicked += OnRecommendedProjectCard_Clicked;
+
+                        card.CardClicked += OnGoingProjectCard_Clicked;
+                        card.WireClickEvents(); // Ensure clicks are registered
                         flpRecommendedProjects.Controls.Add(card);
                     }
                 }
@@ -67,6 +101,49 @@ namespace Freelance_Fusion.Dashboards
             catch (Exception ex)
             {
                 MessageBox.Show($"Failed to load recommended projects: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async Task LoadOngoingProjects()
+        {
+            try
+            {
+                flpOngoingProjects.Controls.Clear();
+
+                // 1. Fetch the list of Project IDs from the current freelancer's 'ongoingProjects' node.
+                var projectIdsSnapshot = await _authenticatedClient
+                    .Child("users")
+                    .Child(_uid)
+                    .Child("ongoingProjects")
+                    .OnceAsync<bool>();
+
+                if (projectIdsSnapshot == null || !projectIdsSnapshot.Any()) return;
+
+                var projectIds = projectIdsSnapshot.Select(p => p.Key).ToList();
+
+                // 2. Fetch the full details for each of those projects in parallel.
+                var projectFetchTasks = projectIds.Select(projectId =>
+                    _authenticatedClient
+                        .Child("projects")
+                        .Child(projectId)
+                        .OnceSingleAsync<ProjectClient>()
+                ).ToList();
+
+                var projects = await Task.WhenAll(projectFetchTasks);
+
+                // 3. Create and add the cards to the 'flpOngoingProjects' panel.
+                // We are reusing the same card from the client's dashboard.
+                foreach (var project in projects.Where(p => p != null))
+                {
+                    OnGoingProjectCard card = new OnGoingProjectCard();
+                    card.Populate(project);
+                    card.CardClicked += OnRecommendedProjectCard_Clicked; // Reuse the same click handler
+                    flpOngoingProjects.Controls.Add(card);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to load ongoing projects: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void OnRecommendedProjectCard_Clicked(object sender, ProjectEventArgs e)
@@ -96,7 +173,7 @@ namespace Freelance_Fusion.Dashboards
         }
         private async void FreelancersDashboard_Load(object sender, EventArgs e)
         {
-            await LoadRecommendedProjects();
+            await Task.WhenAll(LoadRecommendedProjects(), LoadOngoingProjects());
         }
 
         private void btnRecScrollRight_MouseDown(object sender, MouseEventArgs e)
@@ -116,6 +193,24 @@ namespace Freelance_Fusion.Dashboards
         {
             int newPosition = flpRecommendedProjects.AutoScrollPosition.X + _scrollAmount;
             flpRecommendedProjects.AutoScrollPosition = new Point(Math.Abs(newPosition), 0);
+        }
+
+        private void OngoingScroll_MouseDown(object sender, MouseEventArgs e)
+        {
+            var button = sender as Control;
+            _ongoingScrollAmount = (button.Name.Contains("Right")) ? 15 : -15;
+            ongoingScrollTimer.Start(); // Assuming a timer named 'ongoingScrollTimer'
+        }
+
+        private void OngoingScroll_MouseUp(object sender, MouseEventArgs e)
+        {
+            ongoingScrollTimer.Stop();
+        }
+
+        private void ongoingScrollTimer_Tick(object sender, EventArgs e)
+        {
+            int newPosition = flpOngoingProjects.AutoScrollPosition.X + _ongoingScrollAmount;
+            flpOngoingProjects.AutoScrollPosition = new Point(Math.Abs(newPosition), 0);
         }
     }
 }

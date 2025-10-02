@@ -5292,6 +5292,18 @@
   <metadata name="scrollTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 5</value>
   </metadata>
+  <data name="OngoingScroll.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABMAAAAsCAYAAACHfIO0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAJ1JREFUSEvt0kENBCEMheE6wAEOUIIhHCAMBzjAAQ7YMIfJBhbal2UOk/TwXyj5
+        ElKIiNrBqNVa/04xPMXwFMN7KZZzbjHG6XzVFnPOXRdCCNPsV1sspdSMMWJwi6EgiyGgCBvB1VLEWCnl
+        Xoj3fpqLsW/IWnt9mfGOCJNCLIZALIZALNa/gRRisV5/6ni2isWQFMNTDE8xvGewU30AFW7IPZcBTAwA
+        AAAASUVORK5CYII=
+</value>
+  </data>
+  <metadata name="ongoingScrollTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>130, 5</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>

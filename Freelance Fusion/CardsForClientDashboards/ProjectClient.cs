@@ -12,6 +12,7 @@ namespace Freelance_Fusion.CardsForClientDashboards
         public string ClientID { get; set; } // The UID of the client who posted it
         public string Title { get; set; }
         public string Description { get; set; }
+        public string AcceptedFreelancerID { get; set; } // The UID of the freelancer who was accepted
         public List<string> KeySkillsTags { get; set; }
         public double ExpectedPrice { get; set; }
         public double FinalPrice { get; set; }
@@ -19,10 +20,10 @@ namespace Freelance_Fusion.CardsForClientDashboards
         public DateTime Deadline { get; set; }
         public int Progress { get; set; } // A value from 0 to 100
         public double Rating { get; set; } // A value from 0 to 5
-
         public string DetailedDescription { get; set; }
         public List<string> RequiredSkills { get; set; }
         public List<string> Deliverables { get; set; }
+        public string Status { get; set; } // e.g., "Open", "In Progress", "Completed", "Cancelled" 
 
         public ProjectClient()
         {

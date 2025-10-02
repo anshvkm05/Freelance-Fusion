@@ -58,7 +58,7 @@
             this.RTProjectTitle.Name = "RTProjectTitle";
             this.RTProjectTitle.ReadOnly = true;
             this.RTProjectTitle.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.RTProjectTitle.Size = new System.Drawing.Size(1072, 59);
+            this.RTProjectTitle.Size = new System.Drawing.Size(1091, 59);
             this.RTProjectTitle.TabIndex = 1;
             this.RTProjectTitle.Text = "Project Name ";
             // 
@@ -72,7 +72,7 @@
             this.ProjectDesRichTB.Name = "ProjectDesRichTB";
             this.ProjectDesRichTB.ReadOnly = true;
             this.ProjectDesRichTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
-            this.ProjectDesRichTB.Size = new System.Drawing.Size(1072, 76);
+            this.ProjectDesRichTB.Size = new System.Drawing.Size(1091, 76);
             this.ProjectDesRichTB.TabIndex = 3;
             this.ProjectDesRichTB.Text = "Project description";
             this.ProjectDesRichTB.TextChanged += new System.EventHandler(this.ProjectDesRichTB_TextChanged);
@@ -82,13 +82,13 @@
             this.flpTags.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.flpTags.Location = new System.Drawing.Point(117, 292);
             this.flpTags.Name = "flpTags";
-            this.flpTags.Size = new System.Drawing.Size(1072, 92);
+            this.flpTags.Size = new System.Drawing.Size(1091, 92);
             this.flpTags.TabIndex = 11;
             this.flpTags.Paint += new System.Windows.Forms.PaintEventHandler(this.flpTags_Paint);
             // 
             // RTDetailProjectDescription
             // 
-            this.RTDetailProjectDescription.BackColor = System.Drawing.Color.White;
+            this.RTDetailProjectDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.RTDetailProjectDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.RTDetailProjectDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.RTDetailProjectDescription.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -151,7 +151,7 @@
             // 
             // RTDeliverables
             // 
-            this.RTDeliverables.BackColor = System.Drawing.Color.White;
+            this.RTDeliverables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.RTDeliverables.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.RTDeliverables.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.RTDeliverables.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -198,10 +198,11 @@
             // 
             // flpBids
             // 
+            this.flpBids.AutoScroll = true;
             this.flpBids.BackColor = System.Drawing.Color.White;
-            this.flpBids.Location = new System.Drawing.Point(117, 1487);
+            this.flpBids.Location = new System.Drawing.Point(117, 1377);
             this.flpBids.Name = "flpBids";
-            this.flpBids.Size = new System.Drawing.Size(1146, 319);
+            this.flpBids.Size = new System.Drawing.Size(1158, 370);
             this.flpBids.TabIndex = 12;
             // 
             // progressBar
@@ -223,8 +224,8 @@
             // 
             this.RTRequiredSkiils.Animated = true;
             this.RTRequiredSkiils.AutoScroll = true;
-            this.RTRequiredSkiils.BackColor = System.Drawing.Color.White;
-            this.RTRequiredSkiils.BorderColor = System.Drawing.Color.Silver;
+            this.RTRequiredSkiils.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.RTRequiredSkiils.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.RTRequiredSkiils.BorderRadius = 5;
             this.RTRequiredSkiils.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.RTRequiredSkiils.DefaultText = "";
@@ -232,6 +233,7 @@
             this.RTRequiredSkiils.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.RTRequiredSkiils.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.RTRequiredSkiils.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.RTRequiredSkiils.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.RTRequiredSkiils.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(43)))), ((int)(((byte)(1)))));
             this.RTRequiredSkiils.Font = new System.Drawing.Font("Arial", 15.75F);
             this.RTRequiredSkiils.ForeColor = System.Drawing.Color.Black;

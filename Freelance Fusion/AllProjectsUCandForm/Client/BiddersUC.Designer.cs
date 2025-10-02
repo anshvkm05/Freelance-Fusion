@@ -50,7 +50,7 @@
             this.BtnBidAccept.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(43)))), ((int)(((byte)(1)))));
             this.BtnBidAccept.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnBidAccept.ForeColor = System.Drawing.Color.White;
-            this.BtnBidAccept.Location = new System.Drawing.Point(970, 39);
+            this.BtnBidAccept.Location = new System.Drawing.Point(964, 36);
             this.BtnBidAccept.Name = "BtnBidAccept";
             this.BtnBidAccept.Size = new System.Drawing.Size(123, 42);
             this.BtnBidAccept.TabIndex = 17;
@@ -76,7 +76,7 @@
             this.RTProposalText.Font = new System.Drawing.Font("Arial", 12F);
             this.RTProposalText.ForeColor = System.Drawing.Color.Black;
             this.RTProposalText.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.RTProposalText.Location = new System.Drawing.Point(477, 28);
+            this.RTProposalText.Location = new System.Drawing.Point(475, 28);
             this.RTProposalText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RTProposalText.Multiline = true;
             this.RTProposalText.Name = "RTProposalText";
@@ -92,13 +92,13 @@
             this.RTBidAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.RTBidAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.RTBidAmount.Cursor = System.Windows.Forms.Cursors.Default;
-            this.RTBidAmount.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RTBidAmount.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RTBidAmount.ForeColor = System.Drawing.Color.Black;
-            this.RTBidAmount.Location = new System.Drawing.Point(285, 52);
+            this.RTBidAmount.Location = new System.Drawing.Point(275, 50);
             this.RTBidAmount.Name = "RTBidAmount";
             this.RTBidAmount.ReadOnly = true;
             this.RTBidAmount.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
-            this.RTBidAmount.Size = new System.Drawing.Size(165, 43);
+            this.RTBidAmount.Size = new System.Drawing.Size(185, 43);
             this.RTBidAmount.TabIndex = 36;
             this.RTBidAmount.Text = "None";
             // 
@@ -107,13 +107,13 @@
             this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.richTextBox1.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.ForeColor = System.Drawing.Color.Black;
             this.richTextBox1.Location = new System.Drawing.Point(21, 22);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
-            this.richTextBox1.Size = new System.Drawing.Size(236, 40);
+            this.richTextBox1.Size = new System.Drawing.Size(236, 43);
             this.richTextBox1.TabIndex = 37;
             this.richTextBox1.Text = "Freelancer:";
             // 
@@ -122,7 +122,7 @@
             this.TBFreelancerName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.TBFreelancerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TBFreelancerName.Cursor = System.Windows.Forms.Cursors.Default;
-            this.TBFreelancerName.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBFreelancerName.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBFreelancerName.ForeColor = System.Drawing.Color.Black;
             this.TBFreelancerName.Location = new System.Drawing.Point(21, 57);
             this.TBFreelancerName.Name = "TBFreelancerName";
@@ -138,7 +138,8 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1144, 120);
+            this.pictureBox1.Size = new System.Drawing.Size(1135, 115);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -153,7 +154,7 @@
             this.Controls.Add(this.BtnBidAccept);
             this.Controls.Add(this.pictureBox1);
             this.Name = "BiddersUC";
-            this.Size = new System.Drawing.Size(1144, 120);
+            this.Size = new System.Drawing.Size(1135, 115);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
