@@ -12,6 +12,7 @@ namespace Freelance_Fusion.CardsForClientDashboards
         public string ClientID { get; set; } // The UID of the client who posted it
         public string Title { get; set; }
         public string Description { get; set; }
+        public string SubmissionLink { get; set; }
         public string AcceptedFreelancerID { get; set; } // The UID of the freelancer who was accepted
         public List<string> KeySkillsTags { get; set; }
         public double ExpectedPrice { get; set; }

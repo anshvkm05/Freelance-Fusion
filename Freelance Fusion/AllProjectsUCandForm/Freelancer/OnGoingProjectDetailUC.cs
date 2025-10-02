@@ -1,4 +1,5 @@
 ﻿using Firebase.Database;
+using Firebase.Database.Query;
 using Freelance_Fusion.CardsForClientDashboards;
 using System;
 using System.Collections.Generic;
@@ -64,21 +65,84 @@ namespace Freelance_Fusion.AllProjectsUCandForm.Freelancer
             lblProgressPercentage.Text = project.Progress.ToString() + "%";
         }
 
-        private void btnSubmitProject_Click(object sender, EventArgs e)
+        private async void btnSubmitProject_Click(object sender, EventArgs e)
         {
-            if (TBEnterProjectLink == null || string.IsNullOrWhiteSpace(TBEnterProjectLink.Text))
+            if (_progress < 100)
             {
-                MessageBox.Show("Enter a valid link to submit your project.", "Error");
+                MessageBox.Show("You can only submit the project when the progress is 100%.", "Update Progress First", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (MessageBox.Show("Are you sure you want to mark this project as completed?", "Confirm Completion", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (string.IsNullOrWhiteSpace(TBEnterProjectLink.Text))
             {
-                MessageBox.Show("Project marked as completed!", "Success");
+                MessageBox.Show("Please enter a valid link to submit your project.", "Link Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (MessageBox.Show("Are you sure you want to submit this project for review?", "Confirm Submission", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    // Update the project's status and add the submission link
+                    await _authenticatedClient
+                        .Child("projects")
+                        .Child(_project.ProjectID)
+                        .PatchAsync(new
+                        {
+                            Status = "Submitted", // A new status for client review
+                            SubmissionLink = TBEnterProjectLink.Text
+                        });
+
+                    // --- FAN-OUT: Move the project from 'ongoing' to 'completed' for the freelancer ---
+                    // 1. Remove the reference from the ongoing projects list
+                    await _authenticatedClient
+                        .Child("users")
+                        .Child(_freelancerUid)
+                        .Child("ongoingProjects")
+                        .Child(_project.ProjectID)
+                        .DeleteAsync();
+
+                    // 2. Add a reference to the completed projects list
+                    await _authenticatedClient
+                        .Child("users")
+                        .Child(_freelancerUid)
+                        .Child("completedProjects")
+                        .Child(_project.ProjectID)
+                        .PutAsync(true);
+
+                    MessageBox.Show("Project submitted successfully for client review!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // You might want to close the form here or disable the buttons
+                    btnSubmitProject.Enabled = false;
+                    BtnUpdateProgress.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to submit project: {ex.Message}", "Error");
+                }
             }
         }
 
-        private void BtnUpdateProgress_Click(object sender, EventArgs e)
+        private async void BtnUpdateProgress_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Use PatchAsync to update only the 'Progress' field in the database
+                await _authenticatedClient
+                    .Child("projects")
+                    .Child(_project.ProjectID)
+                    .PatchAsync(new { Progress = _progress });
+
+                // Update the original project object so the UI is consistent if they re-open it
+                _project.Progress = _progress;
+
+                MessageBox.Show("Progress updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to update progress: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Revert the local change if the database update fails
+                lblProgressPercentage.Text = _project.Progress.ToString() + "%";
+                _progress = _project.Progress;
+            }
         }
 
         private void BtnUpdateProgress_MouseHover(object sender, EventArgs e)
@@ -94,14 +158,14 @@ namespace Freelance_Fusion.AllProjectsUCandForm.Freelancer
         private void Add5percenttoProgress_Click(object sender, EventArgs e)
         {
             if ( _progress >= 100 ) return;
-            _progress += 5;
+            _progress = Math.Min(100, _progress + 5); // Ensure it doesn't exceed 100
             lblProgressPercentage.Text = _progress.ToString() + "%";
         }
 
         private void Subtract5percenttoProgress_Click(object sender, EventArgs e)
         {
             if ( _progress <= 0 ) return;
-            _progress -= 5;
+            _progress = Math.Max(0, _progress - 5); // Ensure it doesn't go below 0
             lblProgressPercentage.Text = _progress.ToString() + "%";
         }
     }
