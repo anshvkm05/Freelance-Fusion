@@ -228,5 +228,10 @@ namespace Freelance_Fusion.Dashboards
         {
             lblClicktoLogout.Visible = false;
         }
+
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+            FreelancersDashboard_Load(this, e);
+        }
     }
 }
