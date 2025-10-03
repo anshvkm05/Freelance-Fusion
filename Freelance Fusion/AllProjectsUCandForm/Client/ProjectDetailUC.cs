@@ -25,22 +25,68 @@ namespace Freelance_Fusion.AllProjectsUCandForm
             _authenticatedClient = authenticatedClient;
             _project = project;
         }
+        private void UpdateUIVisibilityByStatus()
+        {
+            // Start by hiding all conditional controls for a clean slate.
+            flpBids.Visible = false; // Assuming you have a label for the bids section
+            lblReviewLink.Visible = false;
+            RTReviewLink.Visible = false;
+            btnPayforProject.Visible = false;
+            lblRate.Visible = false;
+            lblRatingProjecttxt.Visible = false;
+            rate1.Visible = false; rate2.Visible = false; rate3.Visible = false; rate4.Visible = false; rate5.Visible = false;
+
+            // Use a switch statement for clarity
+            switch (_project.Status)
+            {
+                case "Open":
+                    btnPayforProject.Visible = false;
+                    rate1.Visible = false; rate2.Visible = false; rate3.Visible = false; rate4.Visible = false; rate5.Visible = false;
+                    lblReviewLink.Visible = false;
+                    RTReviewLink.Visible=false;
+                    lblRate.Visible = false;
+                    lblRatingProjecttxt.Visible = false;
+                    // Show the bids section for open projects.
+                    flpBids.Visible = true;
+                    break;
+
+                case "In Progress":
+                    flpBids.Visible =false;
+                    break;
+
+                case "Submitted":
+                    // Show the submission link and enable the payment button.
+                    btnPayforProject.Visible = true;
+                    lblRate.Visible = true;
+                    lblRatingProjecttxt.Visible = true;
+                    rate1.Visible = true;
+                    rate2.Visible = true;
+                    rate3.Visible = true;
+                    rate4.Visible = true;
+                    rate5.Visible = true;
+                    RTReviewLink.Text = _project.SubmissionLink;
+                    RTReviewLink.Visible = true;
+                    lblReviewLink.Visible = true;
+                    flpBids.Visible = false; // Client can now pay
+                    break;
+
+                case "Completed":
+                    // Show the submission link, rating controls, and payment button.
+                    lblReviewLink.Visible = true;
+                    RTReviewLink.Visible = true;
+                    RTReviewLink.Text = _project.SubmissionLink;
+                    btnPayforProject.Visible = true;
+                    btnPayforProject.Enabled = false; // Assuming payment is done
+                    lblRate.Visible = true;
+                    lblRatingProjecttxt.Visible = true;
+                    rate1.Visible = true; rate2.Visible = true; rate3.Visible = true; rate4.Visible = true; rate5.Visible = true;
+                    break;
+            }
+        }
 
         private void PopulateDetails()
         {
-            if (_project.Progress == 100 || _project.Status == "Completed") 
-            { 
-                btnPayforProject.Visible = true;
-                lblRate.Visible = true;
-                rate1.Visible = true;
-                rate2.Visible = true;
-                rate3.Visible = true;
-                rate4.Visible = true;
-                rate5.Visible = true;
-                RTReviewLink.Visible = true;
-                lblReviewLink.Visible = true;
-                flpBids.Visible = false;
-            }
+           
             RTProjectTitle.Text = _project.Title;
             ProjectDesRichTB.Text = _project.Description; // Brief description
 
@@ -184,52 +230,45 @@ namespace Freelance_Fusion.AllProjectsUCandForm
 
         private async void ProjectDetailUC_Load(object sender, EventArgs e)
         {
+            UpdateUIVisibilityByStatus();
             PopulateDetails();
             if (_project.Status == "Open") 
             {
                 flpBids.Visible = true;
                 await LoadBids();
             }
-            if (_project.Status == "In Progress")
-            {
-                btnPayforProject.Visible = true;
-                btnPayforProject.Enabled = false;
-                lblRate.Visible = false;
-                rate1.Visible = false;
-                rate2.Visible = false;
-                rate3.Visible = false;
-                rate4.Visible = false;
-                rate5.Visible = false;
-                RTReviewLink.Visible = true;
-                lblReviewLink.Visible = true;
-                flpBids.Visible = false;
-            }
+          
 
         }
 
         private void rate1_Click(object sender, EventArgs e)
         {
             _FreelancerProjectRating = 1;
+            lblRatingProjecttxt.Text = _FreelancerProjectRating.ToString() + "/5";
         }
 
         private void rate2_Click(object sender, EventArgs e)
         {
             _FreelancerProjectRating = 2;
+            lblRatingProjecttxt.Text = _FreelancerProjectRating.ToString() + "/5";
         }
 
         private void rate3_Click(object sender, EventArgs e)
         {
             _FreelancerProjectRating = 3;
+            lblRatingProjecttxt.Text = _FreelancerProjectRating.ToString() + "/5";
         }
 
         private void rate4_Click(object sender, EventArgs e)
         {
             _FreelancerProjectRating = 4;
+            lblRatingProjecttxt.Text = _FreelancerProjectRating.ToString() + "/5";
         }
 
         private void rate5_Click(object sender, EventArgs e)
         {
             _FreelancerProjectRating = 5;
+            lblRatingProjecttxt.Text = _FreelancerProjectRating.ToString() + "/5";
         }
         private void btnSubmitProject_Click(object sender, EventArgs e)
         {

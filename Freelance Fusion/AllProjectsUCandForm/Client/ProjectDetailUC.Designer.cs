@@ -42,7 +42,6 @@
             this.flpBids = new System.Windows.Forms.FlowLayoutPanel();
             this.progressBar = new System.Windows.Forms.RichTextBox();
             this.RTRequiredSkiils = new Guna.UI2.WinForms.Guna2TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.RTReviewLink = new System.Windows.Forms.RichTextBox();
             this.rate1 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.lblRate = new System.Windows.Forms.Label();
@@ -52,6 +51,8 @@
             this.rate4 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.rate5 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnPayforProject = new Guna.UI2.WinForms.Guna2Button();
+            this.lblRatingProjecttxt = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -258,16 +259,6 @@
             this.RTRequiredSkiils.TabIndex = 23;
             this.RTRequiredSkiils.TextChanged += new System.EventHandler(this.RTRequiredSkiils_TextChanged);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1334, 1828);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // RTReviewLink
             // 
             this.RTReviewLink.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -283,6 +274,7 @@
             // 
             // rate1
             // 
+            this.rate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.rate1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.rate1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.rate1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -328,6 +320,7 @@
             // 
             // rate2
             // 
+            this.rate2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.rate2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.rate2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.rate2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -349,6 +342,7 @@
             // 
             // rate3
             // 
+            this.rate3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.rate3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.rate3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.rate3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -370,6 +364,7 @@
             // 
             // rate4
             // 
+            this.rate4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.rate4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.rate4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.rate4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -391,6 +386,7 @@
             // 
             // rate5
             // 
+            this.rate5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.rate5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.rate5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.rate5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -431,10 +427,33 @@
             this.btnPayforProject.Visible = false;
             this.btnPayforProject.Click += new System.EventHandler(this.btnSubmitProject_Click);
             // 
+            // lblRatingProjecttxt
+            // 
+            this.lblRatingProjecttxt.AutoSize = true;
+            this.lblRatingProjecttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lblRatingProjecttxt.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRatingProjecttxt.Location = new System.Drawing.Point(113, 1590);
+            this.lblRatingProjecttxt.Name = "lblRatingProjecttxt";
+            this.lblRatingProjecttxt.Size = new System.Drawing.Size(75, 24);
+            this.lblRatingProjecttxt.TabIndex = 40;
+            this.lblRatingProjecttxt.Text = "Rating";
+            this.lblRatingProjecttxt.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1334, 1828);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // ProjectDetailUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblRatingProjecttxt);
             this.Controls.Add(this.btnPayforProject);
             this.Controls.Add(this.rate5);
             this.Controls.Add(this.rate4);
@@ -468,8 +487,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RichTextBox RTProjectTitle;
         private System.Windows.Forms.RichTextBox ProjectDesRichTB;
         private System.Windows.Forms.FlowLayoutPanel flpTags;
@@ -492,5 +509,7 @@
         private Guna.UI2.WinForms.Guna2CircleButton rate4;
         private Guna.UI2.WinForms.Guna2CircleButton rate5;
         private Guna.UI2.WinForms.Guna2Button btnPayforProject;
+        private System.Windows.Forms.Label lblRatingProjecttxt;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
