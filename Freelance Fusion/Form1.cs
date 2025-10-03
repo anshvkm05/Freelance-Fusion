@@ -64,6 +64,7 @@ namespace Freelance_Fusion
         {
             Dashboards.ClientDashboard CD = new Dashboards.ClientDashboard(e.AuthenticatedClient, e.Uid);
             CD.AddProjectClicked += ShowAddProjectUC;
+            CD.LogOut += LoadLandingPage;
             LoadUC(CD);
         }
 
@@ -77,11 +78,16 @@ namespace Freelance_Fusion
             panel1.Controls.Clear();
             panel1.Controls.Add(usercontrol); 
         }
-        private void Form1_Load(object sender, EventArgs e)
+
+        private void LoadLandingPage(object sender, EventArgs e)
         {
             landingApplication la = new landingApplication();
             LoadUC(la);
             la.singupbutton += ShowLoginRegisterOverlay;
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoadLandingPage(null, null);
         }
 
         private void OnLoginComplete_ShowDashboard(object sender, LoginCompleteEventArgs e)
@@ -91,6 +97,7 @@ namespace Freelance_Fusion
             {
                 ClientDashboard cd = new ClientDashboard(e.AuthenticatedClient, e.Uid);
                 cd.AddProjectClicked += OnStartOnboarding_ShowQuestionnaire; // Reuse onboarding for adding projects
+                cd.LogOut += LoadLandingPage;
                 LoadUC(cd);
             }
             else if (e.UserProfile.UserType == "Freelancer")

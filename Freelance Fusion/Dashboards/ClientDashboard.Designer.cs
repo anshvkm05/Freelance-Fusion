@@ -42,6 +42,7 @@
             this.flpRecommendedFreelancers = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlPastProjects = new System.Windows.Forms.Panel();
             this.flpPastProjects = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlOngoingProjectsContainer.SuspendLayout();
             this.pnlRecommendedFreelancers.SuspendLayout();
@@ -186,10 +187,22 @@
             this.flpPastProjects.Size = new System.Drawing.Size(1182, 454);
             this.flpPastProjects.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.Location = new System.Drawing.Point(1283, 2914);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(44, 33);
+            this.button1.TabIndex = 43;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ClientDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlPastProjects);
             this.Controls.Add(this.pnlRecommendedFreelancers);
             this.Controls.Add(this.Profile);
@@ -223,5 +236,6 @@
         private System.Windows.Forms.FlowLayoutPanel flpRecommendedFreelancers;
         private System.Windows.Forms.Panel pnlPastProjects;
         private System.Windows.Forms.FlowLayoutPanel flpPastProjects;
+        private System.Windows.Forms.Button button1;
     }
 }

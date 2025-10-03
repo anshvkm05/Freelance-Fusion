@@ -23,6 +23,7 @@ namespace Freelance_Fusion.Dashboards
         private readonly string _uid;
         private int _scrollAmount = 0;
         public event EventHandler<OnboardingEventArgs> AddProjectClicked;
+        public event EventHandler LogOut;
         public ClientDashboard(FirebaseClient authenticatedClient, string uid)
         {
             InitializeComponent();
@@ -175,6 +176,11 @@ namespace Freelance_Fusion.Dashboards
         }
 
         private void Profile_Click(object sender, EventArgs e)
+        {
+            LogOut?.Invoke(this, EventArgs.Empty);  
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
         }
     }
