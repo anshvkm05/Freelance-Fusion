@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FreelancersDashboard));
             this.ClientBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.BtnProfile = new Guna.UI2.WinForms.Guna2CircleButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlOngoingProjectsContainer = new System.Windows.Forms.Panel();
             this.flpOngoingProjects = new System.Windows.Forms.FlowLayoutPanel();
@@ -44,6 +44,7 @@
             this.scrollTimer = new System.Windows.Forms.Timer(this.components);
             this.OngoingScroll = new Guna.UI2.WinForms.Guna2TileButton();
             this.ongoingScrollTimer = new System.Windows.Forms.Timer(this.components);
+            this.lblClicktoLogout = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlOngoingProjectsContainer.SuspendLayout();
             this.pnlRecommendedProjectsContainer.SuspendLayout();
@@ -68,22 +69,25 @@
             this.ClientBtn.TabIndex = 25;
             this.ClientBtn.Text = "Client";
             // 
-            // guna2CircleButton1
+            // BtnProfile
             // 
-            this.guna2CircleButton1.BackgroundImage = global::Freelance_Fusion.Properties.Resources.Vector;
-            this.guna2CircleButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.guna2CircleButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2CircleButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2CircleButton1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CircleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2CircleButton1.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton1.Location = new System.Drawing.Point(1248, 15);
-            this.guna2CircleButton1.Name = "guna2CircleButton1";
-            this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton1.Size = new System.Drawing.Size(58, 61);
-            this.guna2CircleButton1.TabIndex = 39;
+            this.BtnProfile.BackgroundImage = global::Freelance_Fusion.Properties.Resources.Vector;
+            this.BtnProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BtnProfile.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnProfile.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnProfile.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnProfile.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnProfile.FillColor = System.Drawing.Color.Transparent;
+            this.BtnProfile.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnProfile.ForeColor = System.Drawing.Color.White;
+            this.BtnProfile.Location = new System.Drawing.Point(1248, 15);
+            this.BtnProfile.Name = "BtnProfile";
+            this.BtnProfile.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.BtnProfile.Size = new System.Drawing.Size(58, 61);
+            this.BtnProfile.TabIndex = 39;
+            this.BtnProfile.Click += new System.EventHandler(this.BtnProfile_Click);
+            this.BtnProfile.MouseLeave += new System.EventHandler(this.BtnProfile_MouseLeave);
+            this.BtnProfile.MouseHover += new System.EventHandler(this.BtnProfile_MouseHover);
             // 
             // pictureBox1
             // 
@@ -184,7 +188,6 @@
             // 
             // scrollTimer
             // 
-            this.scrollTimer.Interval = 20;
             this.scrollTimer.Tick += new System.EventHandler(this.scrollTimer_Tick);
             // 
             // OngoingScroll
@@ -210,17 +213,29 @@
             // 
             this.ongoingScrollTimer.Tick += new System.EventHandler(this.ongoingScrollTimer_Tick);
             // 
+            // lblClicktoLogout
+            // 
+            this.lblClicktoLogout.AutoSize = true;
+            this.lblClicktoLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClicktoLogout.Location = new System.Drawing.Point(1127, 38);
+            this.lblClicktoLogout.Name = "lblClicktoLogout";
+            this.lblClicktoLogout.Size = new System.Drawing.Size(115, 18);
+            this.lblClicktoLogout.TabIndex = 46;
+            this.lblClicktoLogout.Text = "Click to Log Out";
+            this.lblClicktoLogout.Visible = false;
+            // 
             // FreelancersDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblClicktoLogout);
             this.Controls.Add(this.OngoingScroll);
             this.Controls.Add(this.btnRecScrollLeft);
             this.Controls.Add(this.btnRecScrollRight);
             this.Controls.Add(this.pnlCompletedProjects);
             this.Controls.Add(this.pnlRecommendedProjectsContainer);
             this.Controls.Add(this.pnlOngoingProjectsContainer);
-            this.Controls.Add(this.guna2CircleButton1);
+            this.Controls.Add(this.BtnProfile);
             this.Controls.Add(this.ClientBtn);
             this.Controls.Add(this.pictureBox1);
             this.Name = "FreelancersDashboard";
@@ -231,6 +246,7 @@
             this.pnlRecommendedProjectsContainer.ResumeLayout(false);
             this.pnlCompletedProjects.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -238,7 +254,7 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2Button ClientBtn;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
+        private Guna.UI2.WinForms.Guna2CircleButton BtnProfile;
         private System.Windows.Forms.Panel pnlOngoingProjectsContainer;
         private System.Windows.Forms.FlowLayoutPanel flpOngoingProjects;
         private System.Windows.Forms.Panel pnlRecommendedProjectsContainer;
@@ -250,5 +266,6 @@
         private System.Windows.Forms.Timer scrollTimer;
         private Guna.UI2.WinForms.Guna2TileButton OngoingScroll;
         private System.Windows.Forms.Timer ongoingScrollTimer;
+        private System.Windows.Forms.Label lblClicktoLogout;
     }
 }

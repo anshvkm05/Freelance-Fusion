@@ -67,6 +67,7 @@ namespace Freelance_Fusion.AllProjectsUCandForm.Freelancer
 
         private async void btnSubmitBid_Click(object sender, EventArgs e)
         {
+            btnSubmitBid.Enabled = false;
             // Basic validation
             if (!double.TryParse(TBEnterBidAmount.Text, out double bidAmount) || string.IsNullOrWhiteSpace(TBTextToBid.Text))
             {
@@ -107,6 +108,7 @@ namespace Freelance_Fusion.AllProjectsUCandForm.Freelancer
             }
             catch (Exception ex)
             {
+                btnSubmitBid.Enabled = true;   
                 MessageBox.Show($"Failed to place bid: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

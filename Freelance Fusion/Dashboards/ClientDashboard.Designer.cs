@@ -43,6 +43,7 @@
             this.pnlPastProjects = new System.Windows.Forms.Panel();
             this.flpPastProjects = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
+            this.lblClicktoLogout = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlOngoingProjectsContainer.SuspendLayout();
             this.pnlRecommendedFreelancers.SuspendLayout();
@@ -154,6 +155,8 @@
             this.Profile.Size = new System.Drawing.Size(58, 61);
             this.Profile.TabIndex = 40;
             this.Profile.Click += new System.EventHandler(this.Profile_Click);
+            this.Profile.MouseLeave += new System.EventHandler(this.Profile_MouseLeave);
+            this.Profile.MouseHover += new System.EventHandler(this.Profile_MouseHover);
             // 
             // pnlRecommendedFreelancers
             // 
@@ -198,10 +201,23 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lblClicktoLogout
+            // 
+            this.lblClicktoLogout.AutoSize = true;
+            this.lblClicktoLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClicktoLogout.Location = new System.Drawing.Point(1128, 38);
+            this.lblClicktoLogout.Name = "lblClicktoLogout";
+            this.lblClicktoLogout.Size = new System.Drawing.Size(115, 18);
+            this.lblClicktoLogout.TabIndex = 44;
+            this.lblClicktoLogout.Text = "Click to Log Out";
+            this.lblClicktoLogout.Visible = false;
+            this.lblClicktoLogout.MouseHover += new System.EventHandler(this.lblClicktoLogout_MouseHover);
+            // 
             // ClientDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblClicktoLogout);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlPastProjects);
             this.Controls.Add(this.pnlRecommendedFreelancers);
@@ -219,6 +235,7 @@
             this.pnlRecommendedFreelancers.ResumeLayout(false);
             this.pnlPastProjects.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -237,5 +254,6 @@
         private System.Windows.Forms.Panel pnlPastProjects;
         private System.Windows.Forms.FlowLayoutPanel flpPastProjects;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblClicktoLogout;
     }
 }

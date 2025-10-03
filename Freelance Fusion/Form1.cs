@@ -103,6 +103,7 @@ namespace Freelance_Fusion
             else if (e.UserProfile.UserType == "Freelancer")
             {
                 FreelancersDashboard fd = new FreelancersDashboard(e.AuthenticatedClient, e.Uid);
+                fd.LogOut += LoadLandingPage;
                 LoadUC(fd);
             }
             else

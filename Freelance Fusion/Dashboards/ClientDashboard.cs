@@ -183,5 +183,19 @@ namespace Freelance_Fusion.Dashboards
         private void button1_Click(object sender, EventArgs e)
         {
         }
+
+        private void lblClicktoLogout_MouseHover(object sender, EventArgs e)
+        {
+        }
+
+        private void Profile_MouseHover(object sender, EventArgs e)
+        {
+            lblClicktoLogout.Visible = true;
+        }
+
+        private void Profile_MouseLeave(object sender, EventArgs e)
+        {
+            lblClicktoLogout.Visible = false;
+        }
     }
 }

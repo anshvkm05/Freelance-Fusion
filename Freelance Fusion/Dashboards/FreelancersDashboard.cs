@@ -23,6 +23,7 @@ namespace Freelance_Fusion.Dashboards
         private readonly FirebaseClient _authenticatedClient;
         private readonly string _uid;
         private int _scrollAmount = 0;
+        public event EventHandler LogOut;
         private int _ongoingScrollAmount = 0;
         public FreelancersDashboard(FirebaseClient authenticatedClient, string uid)
         {
@@ -198,7 +199,7 @@ namespace Freelance_Fusion.Dashboards
         private void OngoingScroll_MouseDown(object sender, MouseEventArgs e)
         {
             var button = sender as Control;
-            _ongoingScrollAmount = (button.Name.Contains("Right")) ? 15 : -15;
+            _ongoingScrollAmount = (button.Name.Contains("Right")) ? 5 : -5;
             ongoingScrollTimer.Start(); // Assuming a timer named 'ongoingScrollTimer'
         }
 
@@ -211,6 +212,21 @@ namespace Freelance_Fusion.Dashboards
         {
             int newPosition = flpOngoingProjects.AutoScrollPosition.X + _ongoingScrollAmount;
             flpOngoingProjects.AutoScrollPosition = new Point(Math.Abs(newPosition), 0);
+        }
+
+        private void BtnProfile_Click(object sender, EventArgs e)
+        {
+            LogOut?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void BtnProfile_MouseHover(object sender, EventArgs e)
+        {
+            lblClicktoLogout.Visible = true;
+        }
+
+        private void BtnProfile_MouseLeave(object sender, EventArgs e)
+        {
+            lblClicktoLogout.Visible = false;
         }
     }
 }
