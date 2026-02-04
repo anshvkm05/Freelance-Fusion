@@ -1,6 +1,13 @@
 # Freelance Fusion
 Freelance Fusion is a marketplace platform designed to bridge the gap between talented freelancers and clients. Built with a focus on seamless interaction, this application allows users to manage projects, submit proposals, and build professional relationships through a robust feedback system.
 
+https://github.com/user-attachments/assets/c01be898-14ec-4ff2-ada3-8f733c61e96f
+
+<img width="1353" height="926" alt="Screenshot 2026-02-04 115548" src="https://github.com/user-attachments/assets/18eb8e2a-1f6c-4051-a53b-63de6c5b7118" />
+
+
+
+
 ## Features
 
 - **Dual-User System:** Separate, specialized experiences for both Clients and Freelancers.
